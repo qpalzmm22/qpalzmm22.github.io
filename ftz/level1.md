@@ -5,7 +5,7 @@
 ---
 
 **level1/hint**
-:::image type="content" source="img/level1_0.PNG" alt-text="0":::
+:::image type="content" source="img/1_0.png" alt-text="0":::
 
 ---
 
@@ -13,7 +13,7 @@
 
 `$ man find` 로 우리가 필요한 명령어를 찾아보자.
 
-:::image type="content" source="img/level1_1.PNG" alt-text="1":::
+:::image type="content" source="img/1_1.png" alt-text="1":::
 
 열심히 읽었다면 우리는 다음과 같이 명령어를 쳐 볼 수 있을것이다
 
@@ -23,17 +23,17 @@
 
 그러면 다음과 같이 결과가 나올 것.
 
-:::image type="content" source="img/level_1_2.PNG" alt-text="2":::
+:::image type="content" source="img/1_2.png" alt-text="2":::
 
 허가 거부된 것들은 전부 그 파일이나 diretory를 읽을 권한이 없어서 뜬 것이다. 잘보면 `/bin/ExecuteMe` 가 매우 수상해보이지 않는가?
 
 `ls -l`로 뭔지 보고 실행해보자.
 
-:::image type="content" source="img/level1_3.png" alt-text="3":::
+:::image type="content" source="img/1_3.png" alt-text="3":::
 
 `level1` 그룹은 읽을 수도, 실행할 수도 있다. 긴말 말고 실행시키자.
 
-:::image type="content" source="img/4.png" alt-text="4":::
+:::image type="content" source="img/1_4.png" alt-text="4":::
 
 ---
 
@@ -44,4 +44,4 @@
 `/bin/bash`를 써서 무한한 권한을 얻어보자
 이후에 `my-pass`명령어를 써서 flag를 얻자!
 
-:::image type="content" source="img/5.png" alt-text="5":::
+:::image type="content" source="img/1_5.png" alt-text="5":::
