@@ -10,7 +10,8 @@ a: 합을 구해야 하는 정수 n개가 저장되어 있는 배열 (0 ≤ a[i]
 
 #include <stdio.h>
 
-int main(void){
-    printf("Hello World\n");
+int main(void)
+{
+    printf("Hello World!!\n");
     return 0;
-}   
+} 
