@@ -11,9 +11,9 @@ title:            ri0ht
 tagline:          'A Jekyll theme'
 description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 url:              github.com/qpalzmm22/qpalzmm22.github.io
-baseurl:          https://qpalzmm22.github.io/
+baseurl:          /
 
-author:
+author:           dd
   name:           'Mark Otto'
   url:            https://twitter.com/mdo
 
