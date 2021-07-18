@@ -1,12 +1,7 @@
-_site
+site/
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
 vendor
-<<<<<<< HEAD
-.exe
-.out
-=======
 *.exe
 *.out
->>>>>>> new_theme
