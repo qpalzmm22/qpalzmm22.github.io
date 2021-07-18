@@ -3,5 +3,10 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+<<<<<<< HEAD
 .exe
 .out
+=======
+*.exe
+*.out
+>>>>>>> new_theme
