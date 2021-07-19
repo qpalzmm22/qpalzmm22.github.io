@@ -5,3 +5,4 @@ site/
 vendor
 *.exe
 *.out
+bin/
