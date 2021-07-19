@@ -1,0 +1,902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://example.com/pwnable/horcruxes/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>horcruxes - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#horcruxes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              horcruxes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        qpalzmm22
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_study_%EC%A0%95%EB%A6%AC/" class="md-nav__link">
+        HTTP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Ftz
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ftz" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ftz
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ftz/level0/" class="md-nav__link">
+        FTZ 환경 설정
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ftz/level1/" class="md-nav__link">
+        Level 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ftz/level2/" class="md-nav__link">
+        Level 2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ftz/test/" class="md-nav__link">
+        test...
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Lob
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Lob" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Lob
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lob/LOB_Passwords/" class="md-nav__link">
+        LOB Passwords
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Pwnable
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Pwnable" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Pwnable
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cmd1/" class="md-nav__link">
+        cmd1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cmd2/" class="md-nav__link">
+        cmd2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coin1/" class="md-nav__link">
+        Coin1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fwnable_passwords/" class="md-nav__link">
+        Fwnable passwords
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        horcruxes
+      </a>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcpy/" class="md-nav__link">
+        memcpy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uaf/" class="md-nav__link">
+        uaf
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Webhacking.kr
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Webhacking.kr" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Webhacking.kr
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/10/" class="md-nav__link">
+        10
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/11/" class="md-nav__link">
+        11
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/12/" class="md-nav__link">
+        12
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/19/" class="md-nav__link">
+        19
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/23/" class="md-nav__link">
+        23
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/25/" class="md-nav__link">
+        25
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/27/" class="md-nav__link">
+        27
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/32/" class="md-nav__link">
+        32
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/33/" class="md-nav__link">
+        33
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/36/" class="md-nav__link">
+        36
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/42/" class="md-nav__link">
+        42
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/47/" class="md-nav__link">
+        47
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/56/" class="md-nav__link">
+        56
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/58/" class="md-nav__link">
+        58
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/59/" class="md-nav__link">
+        59
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webhacking.kr/61/" class="md-nav__link">
+        61
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="horcruxes">horcruxes</h1>
+<p><code>Spelling</code>도 어려운 <code>horcruxes</code>... 해리포터 레퍼런스인 듯하다(no pun intended). 다음은 <code>disas main</code>을 하여 조금 읽어보면 밑에쯤에 나오는 <code>ropme</code> 라는 함수를 <code>disas</code> 한 것이다. 내가 <code>&gt;</code> 로 체크한 부분만 일단은 보자</p>
+<pre><code class="language-armasm">    0x080a0009 &lt;+0&gt;:     push   ebp
+   0x080a000a &lt;+1&gt;:     mov    ebp,esp
+   0x080a000c &lt;+3&gt;:     sub    esp,0x78
+   0x080a000f &lt;+6&gt;:     sub    esp,0xc
+   0x080a0012 &lt;+9&gt;:     push   0x80a050c
+   0x080a0017 &lt;+14&gt;:    call   0x809fc40 &lt;printf@plt&gt;
+   0x080a001c &lt;+19&gt;:    add    esp,0x10
+   0x080a001f &lt;+22&gt;:    sub    esp,0x8
+   0x080a0022 &lt;+25&gt;:    lea    eax,[ebp-0x10]
+   0x080a0025 &lt;+28&gt;:    push   eax
+   0x080a0026 &lt;+29&gt;:    push   0x80a0519
+   0x080a002b &lt;+34&gt;:    call   0x809fd10 &lt;__isoc99_scanf@plt&gt;
+   0x080a0030 &lt;+39&gt;:    add    esp,0x10
+   0x080a0033 &lt;+42&gt;:    call   0x809fc70 &lt;getchar@plt&gt;
+   0x080a0038 &lt;+47&gt;:    mov    edx,DWORD PTR [ebp-0x10]
+   0x080a003b &lt;+50&gt;:    mov    eax,ds:0x80a2088
+   &gt; 0x080a0040 &lt;+55&gt;:    cmp    edx,eax    ; eax : 0x0f3bfbc2
+   0x080a0042 &lt;+57&gt;:    jne    0x80a004e &lt;ropme+69&gt;
+   0x080a0044 &lt;+59&gt;:    call   0x809fe4b &lt;A&gt;
+   0x080a0049 &lt;+64&gt;:    jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a004e &lt;+69&gt;:    mov    edx,DWORD PTR [ebp-0x10]
+   0x080a0051 &lt;+72&gt;:    mov    eax,ds:0x80a2070
+   &gt; 0x080a0056 &lt;+77&gt;:    cmp    edx,eax     ; eax : 0x57c8c218
+   0x080a0058 &lt;+79&gt;:    jne    0x80a0064 &lt;ropme+91&gt;
+   0x080a005a &lt;+81&gt;:    call   0x809fe6a &lt;B&gt;
+   0x080a005f &lt;+86&gt;:    jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a0064 &lt;+91&gt;:    mov    edx,DWORD PTR [ebp-0x10]
+   0x080a0067 &lt;+94&gt;:    mov    eax,ds:0x80a2084
+   &gt; 0x080a006c &lt;+99&gt;:    cmp    edx,eax    ; eax 0x9a5eb423 0xb295b17e
+   0x080a006e &lt;+101&gt;:   jne    0x80a007a &lt;ropme+113&gt;
+   0x080a0070 &lt;+103&gt;:   call   0x809fe89 &lt;C&gt;
+   0x080a0075 &lt;+108&gt;:   jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a007a &lt;+113&gt;:   mov    edx,DWORD PTR [ebp-0x10]
+   0x080a007d &lt;+116&gt;:   mov    eax,ds:0x80a206c
+   &gt; 0x080a0082 &lt;+121&gt;:   cmp    edx,eax
+   0x080a0084 &lt;+123&gt;:   jne    0x80a0090 &lt;ropme+135&gt;
+   0x080a0086 &lt;+125&gt;:   call   0x809fea8 &lt;D&gt;
+   0x080a008b &lt;+130&gt;:   jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a0090 &lt;+135&gt;:   mov    edx,DWORD PTR [ebp-0x10]
+   0x080a0093 &lt;+138&gt;:   mov    eax,ds:0x80a2080
+   &gt; 0x080a0098 &lt;+143&gt;:   cmp    edx,eax; 0x53075220 0x4eacf803 0x60921464 0x6734a73d
+   0x080a009a &lt;+145&gt;:   jne    0x80a00a6 &lt;ropme+157&gt;
+   0x080a009c &lt;+147&gt;:   call   0x809fec7 &lt;E&gt;
+   0x080a00a1 &lt;+152&gt;:   jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a00a6 &lt;+157&gt;:   mov    edx,DWORD PTR [ebp-0x10]
+   0x080a00a9 &lt;+160&gt;:   mov    eax,ds:0x80a2074
+   &gt; 0x080a00ae &lt;+165&gt;:   cmp    edx,eax; 0x60921464      0x6734a73d      0xa7362330      0x70c3bfe5
+   0x080a00b0 &lt;+167&gt;:   jne    0x80a00bc &lt;ropme+179&gt;
+   0x080a00b2 &lt;+169&gt;:   call   0x809fee6 &lt;F&gt;
+   0x080a00b7 &lt;+174&gt;:   jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a00bc &lt;+179&gt;:   mov    edx,DWORD PTR [ebp-0x10]
+   0x080a00bf &lt;+182&gt;:   mov    eax,ds:0x80a207c ;0xa7362330      0x70c3bfe5      0x9a5eb423      0xb295b17e
+   &gt; 0x080a00c4 &lt;+187&gt;:   cmp    edx,eax
+   0x080a00c6 &lt;+189&gt;:   jne    0x80a00d2 &lt;ropme+201&gt;
+   0x080a00c8 &lt;+191&gt;:   call   0x809ff05 &lt;G&gt;
+   0x080a00cd &lt;+196&gt;:   jmp    0x80a0170 &lt;ropme+359&gt;
+   0x080a00d2 &lt;+201&gt;:   sub    esp,0xc
+   0x080a00d5 &lt;+204&gt;:   push   0x80a051c
+   0x080a00da &lt;+209&gt;:   call   0x809fc40 &lt;printf@plt&gt;
+   0x080a00df &lt;+214&gt;:   add    esp,0x10
+   0x080a00e2 &lt;+217&gt;:   sub    esp,0xc
+   0x080a00e5 &lt;+220&gt;:   lea    eax,[ebp-0x74]
+   0x080a00e8 &lt;+223&gt;:   push   eax
+   0x080a00e9 &lt;+224&gt;:   call   0x809fc50 &lt;gets@plt&gt;
+   0x080a00ee &lt;+229&gt;:   add    esp,0x10
+   0x080a00f1 &lt;+232&gt;:   sub    esp,0xc
+   0x080a00f4 &lt;+235&gt;:   lea    eax,[ebp-0x74]
+   0x080a00f7 &lt;+238&gt;:   push   eax
+   0x080a00f8 &lt;+239&gt;:   call   0x809fd20 &lt;atoi@plt&gt;
+   0x080a00fd &lt;+244&gt;:   add    esp,0x10
+   0x080a0100 &lt;+247&gt;:   mov    edx,eax
+   0x080a0102 &lt;+249&gt;:   mov    eax,ds:0x80a2078
+   &gt; 0x080a0107 &lt;+254&gt;:   cmp    edx,eax ; 0xabcb4d9e      0x09f57acb      0x7b2ae5c1      0xa2eb858f
+   0x080a0109 &lt;+256&gt;:   jne    0x80a0160 &lt;ropme+343&gt;
+   0x080a010b &lt;+258&gt;:   sub    esp,0x8
+   0x080a010e &lt;+261&gt;:   push   0x0
+   0x080a0110 &lt;+263&gt;:   push   0x80a053c
+   0x080a0115 &lt;+268&gt;:   call   0x809fcc0 &lt;open@plt&gt;
+   0x080a011a &lt;+273&gt;:   add    esp,0x10
+   0x080a011d &lt;+276&gt;:   mov    DWORD PTR [ebp-0xc],eax
+   0x080a0120 &lt;+279&gt;:   sub    esp,0x4
+   0x080a0123 &lt;+282&gt;:   push   0x64
+   0x080a0125 &lt;+284&gt;:   lea    eax,[ebp-0x74]
+   0x080a0128 &lt;+287&gt;:   push   eax
+   0x080a0129 &lt;+288&gt;:   push   DWORD PTR [ebp-0xc]
+   0x080a012c &lt;+291&gt;:   call   0x809fc30 &lt;read@plt&gt;
+   0x080a0131 &lt;+296&gt;:   add    esp,0x10
+   0x080a0134 &lt;+299&gt;:   mov    BYTE PTR [ebp+eax*1-0x74],0x0
+   0x080a0139 &lt;+304&gt;:   sub    esp,0xc
+   0x080a013c &lt;+307&gt;:   lea    eax,[ebp-0x74]
+   0x080a013f &lt;+310&gt;:   push   eax
+   0x080a0140 &lt;+311&gt;:   call   0x809fca0 &lt;puts@plt&gt;
+   0x080a0145 &lt;+316&gt;:   add    esp,0x10
+   0x080a0148 &lt;+319&gt;:   sub    esp,0xc
+   0x080a014b &lt;+322&gt;:   push   DWORD PTR [ebp-0xc]
+   0x080a014e &lt;+325&gt;:   call   0x809fd30 &lt;close@plt&gt;
+   0x080a0153 &lt;+330&gt;:   add    esp,0x10
+   0x080a0156 &lt;+333&gt;:   sub    esp,0xc
+   0x080a0159 &lt;+336&gt;:   push   0x0
+   0x080a015b &lt;+338&gt;:   call   0x809fcb0 &lt;exit@plt&gt;
+   0x080a0160 &lt;+343&gt;:   sub    esp,0xc
+   0x080a0163 &lt;+346&gt;:   push   0x80a0544
+   0x080a0168 &lt;+351&gt;:   call   0x809fca0 &lt;puts@plt&gt;
+   0x080a016d &lt;+356&gt;:   add    esp,0x10
+   0x080a0170 &lt;+359&gt;:   mov    eax,0x0
+   0x080a0175 &lt;+364&gt;:   leave
+   0x080a0176 &lt;+365&gt;:   ret
+</code></pre>
+<p>ABCB 4D9E : 
+2882227614</p>
+<p>470809186</p>
+<p>set disassembly intel
+b <em>ropme+55
+b </em>ropme+77
+b <em>ropme+99
+b </em>ropme+121
+b <em>ropme+143
+b </em>ropme+165
+b <em>ropme+187
+b </em>ropme+254
+b A
+b B
+b C
+b D
+b E
+b F
+b G</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../fwnable_passwords/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fwnable passwords" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Fwnable passwords
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../memcpy/" class="md-footer__link md-footer__link--next" aria-label="Next: memcpy" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              memcpy
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
