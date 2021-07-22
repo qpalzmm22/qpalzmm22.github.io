@@ -2,12 +2,12 @@
 
 ---
 
-I love puzzles...
+I love puzzles... or do I?
 
 ---
 
-- [github.com/qpalzmm22](github.com/qpalzmm22)
-- [qpalzmm22@gmail.com](qpalzmm22@gmail.com)
+- [github.com/qpalzmm22](www.github.com/qpalzmm22)
+- [qpalzmm22@gmail.com](mailto:qpalzmm22@gmail.com)
 
 ---
 
