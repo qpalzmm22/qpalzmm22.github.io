@@ -1,5 +1,7 @@
 # JAVA Secure Coding Guide Note
 
+**This Note is about ways to secure code JAVA against various attacks**
+
 * Types of Secure Coding   
     * Input data verification
     * Security feauture
@@ -115,7 +117,36 @@ xqe.bindString(new QName("itemId"), itemId, null);
 1. Filter `", [, ], /, =, @, etc` and Query keywords
 2. Use XQuery class. `XQuery xquery = new XQueryFactory().createXQuery(new File("dologin.xq"));`, `vars.put("loginID", name);`
 
+## LDAP Injection
 
 
+> LDAP : **(Lightweight Directory Access Protocol)**. Protocol for directory service. `ctx.search()` inside LDAP, so one must consider injections.
 
+- LDAP Authentication Flow
+![1](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlFwkV%2FbtqHT1ce8qb%2Fk6KfyzcwwF68hraSlFiWEK%2Fimg.png)
+
+- LDAP Directory struction
+![2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbub5ZE%2FbtqH0qB7Iwi%2Fm9aVKNNXYNnEt3sp6UxY0k%2Fimg.png)
+
+- Ref: https://yongho1037.tistory.com/796
+
+1. Filtering. Replace all the `\` in DN, and consider special characters`(=, +, <, >, #, ; \, etc)` as regular letter 
+
+## CSRF(Cross-Site Request Forgery)
+
+> Unauthorized requests done by attacker
+
+1. Use Post Method?? => What if you can modify it by MITM(Man in the Middle) Attack using `burpsuite`.
+
+## Path Traversal
+
+1. Use `replaceAll()` to filter **(", \, /)**.
+2. Check file path with `getAbsolutePath()`
+3. Make document lists and get url by dictionary system. 
+
+## HTTP Response Splitting
+
+> Happens on `HTTP`. If the application allowd `CR`(%0d,\r) and `LF`(%0a,\n), HTTLP Response Splitting attack is possible. This known to be fixed in most of the modern JAVA EE Application servers.
+
+- Ref: https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/ 
 
