@@ -2,7 +2,10 @@
 
 ---
 
-I love puzzles... or do I?
+I love puzzles.. or do I?
+
+My name is Jeongyoung. In Chinese Jeong(正) means right and in korean, young is 0. Therefore, my name is basically 01 Chae.  
+
 
 ---
 
