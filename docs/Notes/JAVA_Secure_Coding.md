@@ -313,19 +313,91 @@ query.setParameter("idVal", idValue);
 HttpSession ses = new HttpSession(true);
 ses.putValue("user",username);
 ses.putValue("authenticated","1");
+
 ```
-- [ ] if(getCookie(USER_TYPE).equals(ADMIN_USER))
-- [x] if(((String)request.getSession().getAttribute(USER_TYPE)).equals(ADMIN_USER))
+
+```JAVA
+// Wrong
+if (getCookie(USER_TYPE).equals(ADMIN_USER))
+...
+// Right
+if (((String)request.getSession().getAttribute(USER_TYPE)).equals(ADMIN_USER))
+...
+```
+
+## Authentification
+
+> Missing Authentification on Critical Functions
+
+1. Disable client from bypassing authentication
+2. Important page must be re-authenticated.
+    - Use verified to be safe libraries and frameworks like `OpenSSL` & `ESAPI` 
+
+```JAVA
+public void enforceAuthorization(Object key, Object runtimeParameter) throws org.owasp.esapi.errors.AccessControlException {
+    boolean isAuthorized = false;
+    try {
+        AccessControlRule rule = (AccessControlRule)ruleMap.get(key);
+       if (rule == null) {
+            throw new AccessControlException("AccessControlRule was not found for key: " + key, "");
+        }
+        System.out.println("Enforcing Authorization Rule \"" + key + "\" Using class: "
+        + rule.getClass().getCanonicalName());
+        isAuthorized = rule.isAuthorized(runtimeParameter);
+    } catch (Exception e) {
+        throw new AccessControlException("An unhandled Exception was " + "caught,
+        so we are recasting it as an " + "AccessControlException.", "", e);
+    }
+    if (!isAuthorized) {
+        throw new AccessControlException("Access Denied for key: " + key + " runtimeParameter: " + runtimeParameter, "");
+    }
+}
+```
+
+## Improper Authorization
+
+> SW not checking all the routes from users to access data.
+
+1. Reduce `attack surface`.
+2. Use frameworks like `JAAS`, `ESAPI` 
+
+!!! note "example"
+    This is an example of LDAP setting
+    ```JAVA
+    public void f(String sSingleId, int iFlag, String sServiceProvider, String sUid, String sPwd) {
+        env.put(Context.PROVIDER_URL, sServiceProvider);
+        env.put(Context.SECURITY_AUTHENTICATION, "simple"); // not "none" !!
+        env.put(Context.SECURITY_PRINCIPAL, sUid);
+        env.put(Context.SECURITY_CREDENTIALS, sPwd)
+    }
+    ```
+
+The following example uses `ruleMap` 
+
+```JAVA
+public void enforceAuthorization(Object key, Object runtimeParameter) throws org.owasp.esapi.errors.AccessControlException {
+    boolean isAuthorized = false;       
+    try {
+        AccessControlRule rule = (AccessControlRule)ruleMap.get(key);
+        if (rule == null) 
+            throw new AccessControlException("AccessControlRule was not found for key: " + key, "");
+        System.out.println("Enforcing Authorization Rule \"" + key + "\" Using class: "+ rule.getClass().getCanonicalName());
+        isAuthorized = rule.isAuthorized(runtimeParameter);
+    } catch (Exception e) {
+        throw new AccessControlException("An unhandled Exception was " + "caught, so we are recasting it as an " + "AccessControlException.", "", e);
+    }
+    if (!isAuthorized)
+        throw new AccessControlException("Access Denied for key: " + key + " runtimeParameter: " + runtimeParameter, "");
+}
+```
+
 ---
 
-!!! note
+!!! note "Things to Study"
     1. XSS Injection vs. XSS Manipulation
     2. LDAP 
     3. unsafe reflection
     4. Integer overflow ex.2
-
-!!! note
-    helloworld
-
+    5. RuleMap
 ---
 
