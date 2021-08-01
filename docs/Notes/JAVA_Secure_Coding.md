@@ -16,6 +16,7 @@
 > Use of user's input as a query directly.
 
 1. Use `prepared Statements` and `setString()`.
+2. 
 ```JAVA
 ...
 String query = "SELECT * FROM ? WHERE Name = ? ";
@@ -390,14 +391,406 @@ public void enforceAuthorization(Object key, Object runtimeParameter) throws org
         throw new AccessControlException("Access Denied for key: " + key + " runtimeParameter: " + runtimeParameter, "");
 }
 ```
+## Improper Permission Assignment
+
+> Assignment of read or write authority to unauthorized user.
+
+1. Config. files and exec files and libs must be only read and executed by admin.
+2. Important files like config. files must checked if others can access to it.
+
+```JAVA
+String cmd = "umask 77"; // umask 77 makes it rwx------
+File file = new File("/home/report/report.txt");
+...
+Runtime.getRuntime().exec(cmd);
+
+```
+
+## Use of Broken Cryptographic algorithm
+
+> Use of algorithms like `RC2, RC4, RC5, RC6, MD4, MD5, SHA1,DES`
+> Key size should be long enough        
+
+![1](safe_Secure_Coding)
+
+Following code uses `RSA` + `OAEP`, which is known to be strongest cryptophically safe combination.
+
+
+```JAVA
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.security.Key;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.SecureRandom;
+import java.security.Security;
+import javax.crypto.Cipher;
+/**
+* Servlet implementation class SqlInjection
+*/
+public class Service extends HttpServlet
+{
+    private final String COMMAND_PARAM = "command";
+    // Command Ӯဖ ὆
+    private final String CHANGE_PASSWORD_CMD = "get_user_info";
+    private final String USER_ID_PARM = "user_id";
+    private final String PASSWORD_PARM = "password";
+    private final String NEW_PASSWORD_PARM = "new_password";
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
+    ServletException, IOException{
+        String command = request.getParameter("command");
+        if (command.equals(CHANGE_PASSWORD_CMD)){
+            String userId = request.getParameter(USER_ID_PARM);
+            String password = request.getParameter(PASSWORD_PARM);
+            String newPassword = request.getParameter(NEW_PASSWORD_PARM);
+            ...
+            SecureRandom random = new SecureRandom();
+            KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+            generator.initialize(2048, random);
+            KeyPair pair = generator.generateKeyPair();
+            Key pubKey = pair.getPublic();
+            Key privKey = pair.getPrivate();
+            Cipher cipher = Cipher.getInstance("RSA/ECB/OAEP");
+            cipher.init(Cipher.ENCRYPT_MODE, pubKey, random);
+            byte[] cipherText = cipher.doFinal(newPassword.getBytes());
+            ChangeUserPassword(userId, String(cipherText));
+        }
+    ...
+    }
+...
+}
+
+```
+## Missing Encryption of sensitive data
+
+> Sending sensitive information without encryption
+
+1. Encrypt all the sensitive infos when sending it across internet
+2. Use Secure Cookies(HTTPS only).
+
+## Hard coded Password
+
+> Not good for passwords to be hard coded. It's better to be written in seperate file.
+
+![Cipher Class usuage](https://m.blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=javaking75&logNo=220552245734)
+package com.qpalzmm22.test;
+
+Following code is how to use `AES` and `RSA` 
+
+```JAVA
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+
+public class PractiveEncryption {
+	public static void encryptWithAES(String encrypt_key, String plain_text) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+		
+		
+		Cipher cipher = Cipher.getInstance("AES");
+		
+		SecretKeySpec secretKeySpec = new SecretKeySpec(encrypt_key.getBytes(),"AES");
+		cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+		
+		byte[] encryptBytes = cipher.doFinal(plain_text.getBytes("UTF-8"));
+		System.out.println(new String(encryptBytes));
+		
+		
+		//=======================//
+		
+		cipher.init(Cipher.DECRYPT_MODE,secretKeySpec);
+		byte[] decryptBytes = cipher.doFinal(encryptBytes);
+		System.out.println(new String(decryptBytes));
+	}
+	
+	public static void encryptWithRSA(String plain_text) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException{
+		
+		KeyPairGenerator keypairgen = KeyPairGenerator.getInstance("RSA");
+		KeyPair keyPair = keypairgen.generateKeyPair();
+		RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+		RSAPublicKey publicKey = (RSAPublicKey)keyPair.getPublic();
+		
+		Cipher cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.ENCRYPT_MODE, privateKey );
+		
+		byte[] encryptBytes = cipher.doFinal(plain_text.getBytes());
+		System.out.println(new String(encryptBytes));
+		
+		cipher.init(Cipher.DECRYPT_MODE, publicKey);
+		byte[] decryptBytes = cipher.doFinal(encryptBytes);
+		System.out.println(new String(decryptBytes));
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String encrypt_key = "happyProgrammer!"; // must be 16 letters long.
+		String plain_text1 = "Hello World!";
+		String plain_text2 = "I want to pass the test";
+		
+		try {
+			encryptWithAES(encrypt_key, plain_text1);
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException
+				| BadPaddingException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			encryptWithRSA(plain_text2);
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException
+				| BadPaddingException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+```
+## Not-So-Random
+
+> use of `Math.random()` is not so random due to the lack of seed.
+
+1. Use `java.util.Random` class instead
+2. Use `SecureRandom()` for key generation
+
+## Plaintext Storage of Password
+
+> Saving password as is... ex)old passwd file in unix systems.
+
+1. Using `RSA` with `OAEP`
+
+## Hard Coded Keys
+
+> Hard coded keys give away information about the encryption. Attacker may use this to brute force the code.
+
+1. It is recommended to use `AES, ARIA, SEED, 3DES` for symmetric keys and `RSA` that's 2048 bit long for asymmnetric key algorithm. DO NOT USE `MD4, MD5, SHA1`
+2. Encrypt the keys in diffrent file.
+
+## Weak Passwords
+
+> Weak Passwords cause user account to be vulnerable.
+
+1. Check for the password and require better passwords from user
+
+## Permanent Cookies
+> External input deciding max age of cookies
+
+1. System must check and require user to type stronger password.
+2. Something like this...
+```JAVA
+Cookie c = new Cookie("sessionID", sessionID);
+int t = Integer.parseInt(maxAge);
+if (t > 3600){
+    t = 3600;
+}
+c.setMaxAge(t);
+
+```
+3. Cookie.setMaxAge to negetive value.(only exists when browser is not shutdown).
+
+## Use of One-way Hash Function without Salt && Hardcoded Salt
+
+- Also, do not hard code the salt, but use random values using following code. 
+
+> Without salt, has functions are weak against rainbow table.
+
+```JAVA
+SecureRandom prng = SecureRandom.getInstance("SHA256PRNG");
+String randomNum = new Integer( prng.nextInt() ).toString();
+digest.update(randomNum.getBytes());
+```
+
+```JAVA
+// Instead of This...
+import java.security.MessageDigest;
+
+public btye[] getHash(String password) throws NoSuchAlgorithmException {
+    MessageDigest digest = MessageDigest.getInstances("SHA-256");
+    digest.reset();
+    return input = digest.digest(password.getBytes("UTF-8"));
+}
+
+// Use this
+public btye[] getHash(String password, byte[] salt) throws NoSuchAlgorithmException {
+    MessageDigest digest = MessageDigest.getInstances("SHA-256");
+    digest.reset();
+    digest.update(salt);
+    return input = digest.digest(password.getBytes("UTF-8"));
+}
+```
+
+!!! note "PS"
+    The **KeyPairGenerator** class is used to generate pairs of public and private keys. Key pair generators are constructed using the getInstance factory methods (static methods that return instances of a given class).
+    A Key pair generator for a particular algorithm creates a public/private key pair that can be used with this algorithm. It also associates algorithm-specific parameters with each of the generated keys.
+
+    There are two ways to generate a key pair: in an algorithm-independent manner, and in an algorithm-specific manner. The only difference between the two is the initialization of the object:
+
+!!! note "PSS"
+    Also interestingly, **KeyPairGenerator** automatically uses highest-priorty installed `secureRandom` as a source of randomness when `initialize()` fucntion is called with parameter of `AlgorithmParameterSpec`. That is not the case for **MessageDigest** classes
+
+## No Integrity Check
+
+> Executing or uploading files without checking the integrity of file.
+
+1.`DNS lookup`
+
+## Inappropriate Session Config.
+
+> `SessionMAxInactiveInterval` shouldn't be -1
+
+1. session.setMaxInactiveInterval(-1);
+2. Also in xml
+    <session-config>
+    <session-timeout>-1</session-timeout>
+    </session-config>
+
+## Password Management Heap Inspection
+
+> It's not safe to save infortant data in String class. They always reside in memory until garbage collector in JVM activates. 
+
+1. No saving imfos like this `String str = new String(pass)`;
+2. Use local String variable. It will disappear as soon as function disappears.
+
+## Hard-Codede Username
+
+> DO NOT hard-code login infos, it makes software management hard, or cause bug and of course, login info will be exposed when someone is accessible to code(duh).
+
+1. Instead recieve it through parameter.
+2. It's safer to `load log infos` and `receive the infos` with structered programming method.
+
+## RSA Padding
+
+> RSA must be used with Padding, must be used with `Cipher cipher = Cipher.getInstnaces("RSA/EBC/OAEPPadding")`. Not `"RSA/**none**/OAEPPadding"`.
+
+(What is `EBC, CBC`)[https://ko.wikipedia.org/wiki/%EB%B8%94%EB%A1%9D_%EC%95%94%ED%98%B8_%EC%9A%B4%EC%9A%A9_%EB%B0%A9%EC%8B%9D]
+ 
+OAEP
+![!](https://en.wikipedia.org/wiki/File:Oaep-diagram-20080305.png)
+
+## Anti CSRF Token
+
+
+## Multiple Binds to Same Port
+
+> Could be weak against `packet snipping`
+
+1. `socket.setReuseAddress(false);`
+
+# Insecurity due to State | Time
+
+## TOUTOC(Time of check, Time of use)
+
+> Parellel threads must be manged with multi-processing safe functions
+
+1. Use `synchronized` modifier for the block to be synchronized with other threads.
+
+EX : (notice `synchronized`)
+```JAVA
+public synchronized void run()
+{
+    File f = new File("Test_367.txt");
+    if(f.exists())
+    {
+        f.delete();
+    }
+}
+```
+2. This goes same for variable that must be shared among other threads
+```JAVA
+synchronized(SYNC)
+{
+    name = hreq.getParameter("name");
+    ...
+}   
+```
+
+[about synchronization](https://www.daleseo.com/synchronization/)
+
+
+## Infinite Loop
+
+> Always put recursion in `if-else` statement. Always check if file is sym. link when traversing directories with `isSymbolicLink()`
+
+```JAVA
+public String findFile(String rootDir, String fileName){
+    String[] fileList = getSubFiles(rootDir);
+    for(int fileIdx = 0; fileIdx < fileList.length; fileIdx++){
+        if(isDirectory(fileList[fileIdx]) == true){
+            if(isSymbolicLink(fileList[fileIdx] == false)){
+                String foundPath = findFile(fileList[fileIdx], fileName);
+                if(foundPath != null)
+                    return fileList[fileIdx] + foundPath;
+            }
+        } else {
+            if (fileList[fileIdx].equals(fileName) == true)
+                return fileName;
+        }
+    }
+}
+```
+
+Connection must be done like so because if we only allow `conn` not equal to null, 
+
+```JAVA
+public class SearchThread extends Thread{
+    static private String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
+    static private String jdbc_url = "jdbc:orcle:Thin@123.234.33.22:1521:company"
+    private Connection conn;
+    static private String dbPasswd;
+    private String seachItem;
+
+    public SearchThread(String searchItem){
+        this.searchItem = searchItem;
+    }  
+    public void run(){
+        conn = DriverManeger.getConnection(jdbc_url, "123.234.33.22")
+    }
+}
+
+public class ItemSearcher{
+    public void searchItems(ArrayList<String> items){
+        ArrayList<SearchThread> threads;
+        for(int idx = 0; idx < items.length; idx++){
+            SearchThread thread = new SearchThread(items.get(idx));
+            threads.add(thread);
+            thread.start();
+        } 
+    }
+}
+```
+
+## Static Database Connection
+
+> Do not use `Static` key word for DB connection. This will cause race condition.
+
+1. 
 
 ---
-
 !!! note "Things to Study"
     1. XSS Injection vs. XSS Manipulation
     2. LDAP 
     3. unsafe reflection
     4. Integer overflow ex.2
     5. RuleMap
----
+    6. Cipher class
+       1. MessageDigest 
+    7. Connection con = DriverManager.getConnection(url, "scott", "tiger"); pg.140
+    8. MessageDigest class
+    9. 16번 무결성  검사없는 코드 다운로드
 
+---
