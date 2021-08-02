@@ -11,7 +11,8 @@
 
     위반시 2년 이하의 징역 또는 3,000만원 이하의 벌금에 처한다(64조 1항 1조)
 
-I have been exploring `hisnet` around ever since I found a bug of exposing db info in `강의 계획서` section.
+
+I have been exploring `hisnet` around ever since I found a bug  of exposing db info in `강의 계획서` section.
 
 ## Information Exposure
 
