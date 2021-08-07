@@ -165,9 +165,14 @@ xqe.bindString(new QName("itemId"), itemId, null);
 2. Check file path with `getAbsolutePath()`
 3. Make document lists and get url by dictionary system. 
 
+ - Why in path we need "-report"?
+
 ## HTTP Response Splitting
 
 > Happens on `HTTP`. If the application allowd `CR`(%0d,\r) and `LF`(%0a,\n), HTTLP Response Splitting attack is possible. This known to be fixed in most of the modern JAVA EE Application servers.
+
+Useful to understand HTTP Response Splitting 
+[Ref](https://gracefulsecurity.com/http-header-injection/)
 
 ### Relative references
 - [https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/](https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/)
@@ -724,7 +729,7 @@ synchronized(SYNC)
 
 ## Infinite Loop
 
-> Always put recursion in `if-else` statement. Always check if file is sym. link when traversing directories with `isSymbolicLink()`
+> Always put recursion in `if-else` statement. Always check if file is `symbolic link`. link when traversing directories with `isSymbolicLink()`
 
 ```JAVA
 public String findFile(String rootDir, String fileName){
@@ -776,11 +781,224 @@ public class ItemSearcher{
 
 ## Static Database Connection
 
-> Do not use `Static` key word for DB connection. This will cause race condition.
+> Do not use `Static` keyword for DB connection. This will cause race condition if it's called in multiple places.
+
+```JAVA
+// Unclear
+public void run()
+{
+    // if(conn == NULL) <- not needed because we run it in seperate thread
+    conn = DriverManager.getConnection(jdbc_url, "123.234.33.22", dbPassword);
+}
+```
+
+## Race Condtion : Singleton Member Field
+
+> servlet member fields are shared among other threads, so they may be exposed to unauthorized user.
+
+1. Do Not save user input data's in Servlet field, but save in local variable
+2. or use `new` to allocate the memory.
 
 1. 
-
+```JAVA
+public class RaceCon extends javax.servlet.http.HttpServlet
+{ 
+// private String name; <= do not use this as memberd field
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws
+ServletException, IOException
+    {
+        // Instead recieve it on local variable 
+        String name = req.getParameter("name");
+        if(name == null || "".equals(name)) return;
+        ...
+    }
+    ...
+}
 ---
+
+2. 
+```JAVA
+String [] loginInfo = new String[2];
+loginInfo[1] = request.getParameter(USER_ID_PARM);
+loginInfo[0] = request.getParameter(PASSWORD_PARM);
+```
+Something like this...
+
+## J2EE Bad Practices : Direct Use of Threads (Not in 47 )
+
+> `J2EE` restrictes one from user threads in web applications. Instead, one must use defined framework.
+
+1. No new `Thread(Runnable).start()`;
+
+Safe code looks someting like this
+```JAVA
+public class runthread extends HttpServlet
+{
+    protected void doGet(HttpServletRequest request, HttpServlet Response response) throws ServletException, IOExcption
+    {
+        // New MyClass().main() 
+        Runtime.getRuntime().exec("java AsyncClass");
+    }
+}
+
+class AsyncClass
+{
+    public static void main(String args[])
+    {
+        // Process and store request stats
+
+        System.err.println("do something");
+    }
+}
+```
+
+## Symbolic Name not Mapping to Correct Object
+
+> Attackers could try to manipulate what the symbolic name is pointing.
+
+1. Do not call classes by `Class.forName("...");`, but call by default way(use constructor), `new ...`
+2. **Do not link** the important file but **read the file directly.**
+
+Do not do this, but use the file directly
+![1](img/symbolic_name_0.PNG)
+
+## Double-checked Locking
+
+> Double-checked locking does not work as intended. Method Synchonization is the most secure way to synchronize.
+
+# Error handling
+
+## Information exposure on error messages
+
+> Users could obtain information about system by error messages.
+
+1. Send minimum error messages and deal with exceptions inside the source code.
+2. Be careful when using `printStackTrace()`
+3. Do not include any system info in the error messages
+
+## Detection of Error Condition without action
+
+> A situation where the error was found but not handled correctly
+
+1. Must do **something** in try-catch block
+2. In Try-catch statment, one must make sure after try{}, we must set sensitive values to default values so that the users can't access the value.
+
+## Improper Check for Unusual or Exceptional Conditions
+
+> Do not use broad exceptions (Exception e ), but use specific exceptions
+
+```JAVA
+public void readFromFile(String fileName) throws FileNotFoundException,
+IOException,MyException
+{
+    try
+    {
+    ...
+    // check if filename is null 
+    if ( fileName == NULL ) throw new MyException("ERROR");
+    
+    File myFile = new File(fileName);
+    FileReader fr = new FileReader(myFile);
+    ...
+    
+    } // catch for all possible exceptions
+    catch (FileNotFoundException fe) {...}
+    catch (IOException ie) {...}
+}
+
+```
+
+Combine to the security rule above(**Detection of Error Condition without action**), one must consider all the possibilities and apply actions to each one of them.
+
+## Strong Passwords
+
+Secure Passwords Guide
+
+1. Passwords should be 9 ~ 15 letters
+2. At least one special character.
+3. Do not have id as substring of password
+4. Do not have same password as one before.
+
+## Null Pointer Reference
+
+> Not dereferencing an object without checking if the value is null.
+
+It's simple yet easy to make mistakes
+- should be applied when getting parameter value by `getParameter();`
+
+## Improper Resouce Shutdown or Release
+
+> `Open File Descriptos, heap memory, and sockets` not being closed after usuage.
+
+1. do not close connection on `try` statment but use `finally` to close it
+
+FOR EXAMPLE : 
+
+```JAVA
+public void processFile() throws SQLException
+{
+    Connection conn = null;
+    String url = "jdbc:mysql://127.0.0.1/example?user=root&password=1234";
+    try
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection(url);
+    }
+    catch (ClassNotFoundException e)
+    {
+        System.err.print("error");
+    }
+    catch (SQLException e)
+    {
+        System.err.print("error");
+    }
+    finally
+    {
+        ...
+        conn.close();
+    ...
+```
+
+This goes same for sockets
+
+```JAVA
+...
+    finally
+    {
+        if(listenSocket != null)
+        {
+            listenSocket.close();
+            listenSocket = null;
+        }
+        if(connectionSocket != null)
+        {
+            connectionSocket.close();
+            connectionSocket = null;
+        }
+    }
+```
+
+## Call to Notify()
+
+> `Notify` method is not clear on which thread to wake. Do not use this method.
+
+1. Instead, use `lock1.lock()`, and `lock2.unlock()` with class variable `Lock lock1;`.
+
+## One liners (not vul, but mistakes)
+
+- Do not use `serialPersistentFileds` with `public` modifier, but with `private static final`.
+- Use `thread.start()` instead of `thread.run()` for most cases. [details](https://www.tutorialspoint.com/difference-between-thread-start-and-thread-run-in-java)
+- Do not override `synchronized method` by `asynchronized method`.
+- Use `ServerThreadPool.getInstnace().alloc(), ServerThreadPool.getInstnace().free(this)` to allocate memory to thread.
+
+# Encapsulation
+
+## Exposure of Data Element to Wrong Session
+
+> samse as [](). Check that one.
+
+##
+
 !!! note "Things to Study"
     1. XSS Injection vs. XSS Manipulation
     2. LDAP 
@@ -792,5 +1010,7 @@ public class ItemSearcher{
     7. Connection con = DriverManager.getConnection(url, "scott", "tiger"); pg.140
     8. MessageDigest class
     9. 16번 무결성  검사없는 코드 다운로드
-
+    10. page 243 .why set max_length as local variable?
 ---
+
+
