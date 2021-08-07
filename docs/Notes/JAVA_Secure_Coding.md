@@ -1,4 +1,4 @@
-# JAVA Secure Coding Guide Note
+## JAVA Secure Coding Guide Note
 
 **This Note is about ways to secure code JAVA against various attacks**
 
@@ -11,7 +11,7 @@
     * Encapsulation
     * API Missuse
 
-## SQLi
+### SQLi
 
 > Use of user's input as a query directly.
 
@@ -31,7 +31,7 @@ stmt.setString(2, name);
     3. use of [^\\p{Alnum}] \\ only use alphabets and digits
     4. Also limit keywords like `IF, CHAR, CONCAT, ASCII, UNION, @, exec, ;, SUBSTRING, BENCHMARK, MD5,SHA1, etc...`
 
-### makeSecureString()
+#### makeSecureString()
 ```JAVA
     private String makeSecureString(final String str, int maxLength)
 {
@@ -42,14 +42,14 @@ stmt.setString(2, name);
 
 ```
 
-##  Improper Control of Resource Identifiers, Resource Injection
+###  Improper Control of Resource Identifiers, Resource Injection
 
 > Happens when user's input is directly used to identify socket port, file, etc. 
 
 1. Use list(dictionary) to restrict input value to what it's supposed to be.
 
 
-## XSS
+### XSS
 
 > Availability of inserting script on page.
 
@@ -57,13 +57,13 @@ stmt.setString(2, name);
 
 2. use OWASP supported API, `ESAPI.encoder().encodeForHTMLAttriute();`
 
-## Commnad Injection
+### Commnad Injection
 
 > Use of user's input as part of  system commnad.
 
 1. Must make dictionary so that the user's input doesn't directly go into the command.
 
-## Unrestricted Uploading
+### Unrestricted Uploading
 
 > 1. Avalability of uploading script file. 2. Avalability to access them. 
 
@@ -74,7 +74,7 @@ stmt.setString(2, name);
 3. Block user from executing files directly. If possible, control the file authority.
 4. Randomize file name with hash table
 
-## Open Redirect
+### Open Redirect
 
 > Following code is weak against open redirect exploit. Cracker could redirect url and use `phishing` attack.     
 
@@ -107,7 +107,7 @@ if(allowedUrls.contains(shortcutInfo.url) == false)
 }
 ```
 
-## XQuery Injection
+### XQuery Injection
 > !  Must study more..
 
 1. use `bind...()` functions
@@ -121,7 +121,7 @@ xqe.bindString(new QName("itemId"), itemId, null);
 
 ```
 
-## XPath Injection
+### XPath Injection
 
 > 
 >[What is XPath](https://velog.io/@mjhuh263/TIL-23-HTML-XPATH-%EB%AC%B8%EB%B2%95%EA%B3%BC-selenium%EC%97%90-XPATH-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0) 
@@ -129,7 +129,7 @@ xqe.bindString(new QName("itemId"), itemId, null);
 1. Filter `", [, ], /, =, @, etc` and Query keywords
 2. Use XQuery class. `XQuery xquery = new XQueryFactory().createXQuery(new File("dologin.xq"));`, `vars.put("loginID", name);`
 
-## LDAP Injection
+### LDAP Injection
 
 
 > LDAP : **(Lightweight Directory Access Protocol)**. Protocol for directory service. `ctx.search()` inside LDAP, so one must consider injections.
@@ -140,26 +140,26 @@ xqe.bindString(new QName("itemId"), itemId, null);
 - LDAP Directory struction
 ![2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbub5ZE%2FbtqH0qB7Iwi%2Fm9aVKNNXYNnEt3sp6UxY0k%2Fimg.png)
 
-### Relative references
+#### Relative references
 - [https://yongho1037.tistory.com/796](https://yongho1037.tistory.com/796)
 
 1. Filtering. Replace all the `\` in DN, and consider special characters`(=, +, <, >, #, ; \, (, ), etc)` as regular letter 
 
 
-## LDAP Maniupulation
+### LDAP Maniupulation
 
 > Similar to LDAP Injection
 
 1. Replace all the `\`s with `str.replaceAll("\\","")`
 
 
-## CSRF(Cross-Site Request Forgery)
+### CSRF(Cross-Site Request Forgery)
 
 > Unauthorized requests done by attacker
 
 1. Use Post Method?? => What if you can modify it by MITM(Man in the Middle) Attack using `burpsuite`.
 
-## Path Traversal
+### Path Traversal
 
 1. Use `replaceAll()` to filter **(", \, /)**.
 2. Check file path with `getAbsolutePath()`
@@ -167,26 +167,26 @@ xqe.bindString(new QName("itemId"), itemId, null);
 
  - Why in path we need "-report"?
 
-## HTTP Response Splitting
+### HTTP Response Splitting
 
 > Happens on `HTTP`. If the application allowd `CR`(%0d,\r) and `LF`(%0a,\n), HTTLP Response Splitting attack is possible. This known to be fixed in most of the modern JAVA EE Application servers.
 
 Useful to understand HTTP Response Splitting 
 [Ref](https://gracefulsecurity.com/http-header-injection/)
 
-### Relative references
+#### Relative references
 - [https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/](https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/)
 - [Cross-User Defacement](https://owasp.org/www-community/attacks/Cross-User_Defacement)
 1. Must filter all the header values that are direclty obtained by user. Filter out `\n and \r`
 
-## Integer Overflow
+### Integer Overflow
 
 > When receiving value as an integer, if the value is greater than 2147483647, it goes negative (2's complement).
 
 1. Make sure to check if the value is greater than 0
 2. Also, make sure value doesn't exceed the maximum value of the data type.
 
-## Reliance on Untrusted Inputs in a Security Decision
+### Reliance on Untrusted Inputs in a Security Decision
 
 > Trusting that the hidden values or the header values wouldn't be manipulated by users. 
 
@@ -194,26 +194,26 @@ Useful to understand HTTP Response Splitting
     1. Use session information instead of Cookie.
 2. Design the program so that the program doesn't not depends on input values.
 
-## JDO(JAVA Data Objects), Persistent API, mybatis Data Map  (SQLi)
+### JDO(JAVA Data Objects), Persistent API, mybatis Data Map  (SQLi)
 
 > Another way to execute SQLs.
 1. Use paramatized query (the one with `?`s)
 2. Use [makeSecureString](#makesecurestring)
 
-### Relative Reference
+#### Relative Reference
 - [Presistent](https://gmlwjd9405.github.io/2018/12/25/difference-jdbc-jpa-mybatis.html)
 
-## mybatis Data Map
+### mybatis Data Map
 
 > 
 1. Include filter.
 2. Do not use `($...$)` but use `#<...>#`
 
-### Relative Reference
+#### Relative Reference
 - [Difference of $$ and ##](https://logical-code.tistory.com/25) 
 - [Mybatis](https://mybatis.org/mybatis-3/ko/sqlmap-xml.html)
 
-## External Control of Sys. config.
+### External Control of Sys. config.
 
 1. DO NOT use external input as parameter of `Connection.setCatalog()`
 2. Use whitelisting
@@ -238,7 +238,7 @@ if (command.equals(CHANGE_FTP_PORT))
 }
 ```
 
-## XSS, DOM
+### XSS, DOM
 
 > When `Document.write()` happens, it could be vulernable to `XSS`.
 
@@ -257,27 +257,27 @@ Employee ID: <%= safeEID %>
 
 ```
 
-## EVAL
+### EVAL
 
 > Watch what goes in to the `eval` parameter. Escape letters like (`<, >, &, (, ), ", '`)
 
 1. Use ESAPI.encoder().encodeForJavaScript() 
 
-## Process Control
+### Process Control
 
 > When the process loads library without absolute path, the attacker may change the environment variable and set it to what the attacker wishes.
 
 1. Use absolute path.
 2. Use hash table. => limit what the users can do...
 
-## Unsafe Reflection
+### Unsafe Reflection
 
 > Use of input as selection of class.
 
 
 1. Use whitelist. Control the input.
 
-## Download without Integrity check
+### Download without Integrity check
 
 > Remote download without checking the integrity of the file.
 
@@ -290,7 +290,7 @@ _download(localPath, remoteURL);
 return checkCheckSum(localPath, checksumFilePath);
 ```
 
-## SQLi : Hibernate
+### SQLi : Hibernate
 > Similar to Hibernate : TopLink, CoCoBase.
 
 
@@ -307,7 +307,7 @@ Query query = session.createSQLQuery("select h from Honey as h where h.id '=:idV
 query.setParameter("idVal", idValue);   
 ```
 
-## Reliance on Untrusted Inputs
+### Reliance on Untrusted Inputs
 
 > Believing values like cookies, env. variables and hidden field input values are inmanipulatable.
 
@@ -331,7 +331,7 @@ if (((String)request.getSession().getAttribute(USER_TYPE)).equals(ADMIN_USER))
 ...
 ```
 
-## Authentification
+### Authentification
 
 > Missing Authentification on Critical Functions
 
@@ -360,7 +360,7 @@ public void enforceAuthorization(Object key, Object runtimeParameter) throws org
 }
 ```
 
-## Improper Authorization
+### Improper Authorization
 
 > SW not checking all the routes from users to access data.
 
@@ -396,7 +396,7 @@ public void enforceAuthorization(Object key, Object runtimeParameter) throws org
         throw new AccessControlException("Access Denied for key: " + key + " runtimeParameter: " + runtimeParameter, "");
 }
 ```
-## Improper Permission Assignment
+### Improper Permission Assignment
 
 > Assignment of read or write authority to unauthorized user.
 
@@ -411,7 +411,7 @@ Runtime.getRuntime().exec(cmd);
 
 ```
 
-## Use of Broken Cryptographic algorithm
+### Use of Broken Cryptographic algorithm
 
 > Use of algorithms like `RC2, RC4, RC5, RC6, MD4, MD5, SHA1,DES`
 > Key size should be long enough        
@@ -474,14 +474,14 @@ public class Service extends HttpServlet
 }
 
 ```
-## Missing Encryption of sensitive data
+### Missing Encryption of sensitive data
 
 > Sending sensitive information without encryption
 
 1. Encrypt all the sensitive infos when sending it across internet
 2. Use Secure Cookies(HTTPS only).
 
-## Hard coded Password
+### Hard coded Password
 
 > Not good for passwords to be hard coded. It's better to be written in seperate file.
 
@@ -566,33 +566,33 @@ public class PractiveEncryption {
 	}
 }
 ```
-## Not-So-Random
+### Not-So-Random
 
 > use of `Math.random()` is not so random due to the lack of seed.
 
 1. Use `java.util.Random` class instead
 2. Use `SecureRandom()` for key generation
 
-## Plaintext Storage of Password
+### Plaintext Storage of Password
 
 > Saving password as is... ex)old passwd file in unix systems.
 
 1. Using `RSA` with `OAEP`
 
-## Hard Coded Keys
+### Hard Coded Keys
 
 > Hard coded keys give away information about the encryption. Attacker may use this to brute force the code.
 
 1. It is recommended to use `AES, ARIA, SEED, 3DES` for symmetric keys and `RSA` that's 2048 bit long for asymmnetric key algorithm. DO NOT USE `MD4, MD5, SHA1`
 2. Encrypt the keys in diffrent file.
 
-## Weak Passwords
+### Weak Passwords
 
 > Weak Passwords cause user account to be vulnerable.
 
 1. Check for the password and require better passwords from user
 
-## Permanent Cookies
+### Permanent Cookies
 > External input deciding max age of cookies
 
 1. System must check and require user to type stronger password.
@@ -608,7 +608,7 @@ c.setMaxAge(t);
 ```
 3. Cookie.setMaxAge to negetive value.(only exists when browser is not shutdown).
 
-## Use of One-way Hash Function without Salt && Hardcoded Salt
+### Use of One-way Hash Function without Salt && Hardcoded Salt
 
 - Also, do not hard code the salt, but use random values using following code. 
 
@@ -648,13 +648,13 @@ public btye[] getHash(String password, byte[] salt) throws NoSuchAlgorithmExcept
 !!! note "PSS"
     Also interestingly, **KeyPairGenerator** automatically uses highest-priorty installed `secureRandom` as a source of randomness when `initialize()` fucntion is called with parameter of `AlgorithmParameterSpec`. That is not the case for **MessageDigest** classes
 
-## No Integrity Check
+### No Integrity Check
 
 > Executing or uploading files without checking the integrity of file.
 
 1.`DNS lookup`
 
-## Inappropriate Session Config.
+### Inappropriate Session Config.
 
 > `SessionMAxInactiveInterval` shouldn't be -1
 
@@ -664,21 +664,21 @@ public btye[] getHash(String password, byte[] salt) throws NoSuchAlgorithmExcept
     <session-timeout>-1</session-timeout>
     </session-config>
 
-## Password Management Heap Inspection
+### Password Management Heap Inspection
 
 > It's not safe to save infortant data in String class. They always reside in memory until garbage collector in JVM activates. 
 
 1. No saving imfos like this `String str = new String(pass)`;
 2. Use local String variable. It will disappear as soon as function disappears.
 
-## Hard-Codede Username
+### Hard-Codede Username
 
 > DO NOT hard-code login infos, it makes software management hard, or cause bug and of course, login info will be exposed when someone is accessible to code(duh).
 
 1. Instead recieve it through parameter.
 2. It's safer to `load log infos` and `receive the infos` with structered programming method.
 
-## RSA Padding
+### RSA Padding
 
 > RSA must be used with Padding, must be used with `Cipher cipher = Cipher.getInstnaces("RSA/EBC/OAEPPadding")`. Not `"RSA/**none**/OAEPPadding"`.
 
@@ -687,18 +687,18 @@ public btye[] getHash(String password, byte[] salt) throws NoSuchAlgorithmExcept
 OAEP
 ![!](https://en.wikipedia.org/wiki/File:Oaep-diagram-20080305.png)
 
-## Anti CSRF Token
+### Anti CSRF Token
 
 
-## Multiple Binds to Same Port
+### Multiple Binds to Same Port
 
 > Could be weak against `packet snipping`
 
 1. `socket.setReuseAddress(false);`
 
-# Insecurity due to State | Time
+## Insecurity due to State | Time
 
-## TOUTOC(Time of check, Time of use)
+### TOUTOC(Time of check, Time of use)
 
 > Parellel threads must be manged with multi-processing safe functions
 
@@ -727,7 +727,7 @@ synchronized(SYNC)
 [about synchronization](https://www.daleseo.com/synchronization/)
 
 
-## Infinite Loop
+### Infinite Loop
 
 > Always put recursion in `if-else` statement. Always check if file is `symbolic link`. link when traversing directories with `isSymbolicLink()`
 
@@ -779,7 +779,7 @@ public class ItemSearcher{
 }
 ```
 
-## Static Database Connection
+### Static Database Connection
 
 > Do not use `Static` keyword for DB connection. This will cause race condition if it's called in multiple places.
 
@@ -792,7 +792,7 @@ public void run()
 }
 ```
 
-## Race Condtion : Singleton Member Field
+### Race Condtion : Singleton Member Field
 
 > servlet member fields are shared among other threads, so they may be exposed to unauthorized user.
 
@@ -824,7 +824,7 @@ loginInfo[0] = request.getParameter(PASSWORD_PARM);
 ```
 Something like this...
 
-## J2EE Bad Practices : Direct Use of Threads (Not in 47 )
+### J2EE Bad Practices : Direct Use of Threads (Not in 47 )
 
 > `J2EE` restrictes one from user threads in web applications. Instead, one must use defined framework.
 
@@ -852,7 +852,7 @@ class AsyncClass
 }
 ```
 
-## Symbolic Name not Mapping to Correct Object
+### Symbolic Name not Mapping to Correct Object
 
 > Attackers could try to manipulate what the symbolic name is pointing.
 
@@ -862,13 +862,13 @@ class AsyncClass
 Do not do this, but use the file directly
 ![1](img/symbolic_name_0.PNG)
 
-## Double-checked Locking
+### Double-checked Locking
 
 > Double-checked locking does not work as intended. Method Synchonization is the most secure way to synchronize.
 
-# Error handling
+## Error handling
 
-## Information exposure on error messages
+### Information exposure on error messages
 
 > Users could obtain information about system by error messages.
 
@@ -876,14 +876,14 @@ Do not do this, but use the file directly
 2. Be careful when using `printStackTrace()`
 3. Do not include any system info in the error messages
 
-## Detection of Error Condition without action
+### Detection of Error Condition without action
 
 > A situation where the error was found but not handled correctly
 
 1. Must do **something** in try-catch block
 2. In Try-catch statment, one must make sure after try{}, we must set sensitive values to default values so that the users can't access the value.
 
-## Improper Check for Unusual or Exceptional Conditions
+### Improper Check for Unusual or Exceptional Conditions
 
 > Do not use broad exceptions (Exception e ), but use specific exceptions
 
@@ -910,7 +910,7 @@ IOException,MyException
 
 Combine to the security rule above(**Detection of Error Condition without action**), one must consider all the possibilities and apply actions to each one of them.
 
-## Strong Passwords
+### Strong Passwords
 
 Secure Passwords Guide
 
@@ -919,14 +919,14 @@ Secure Passwords Guide
 3. Do not have id as substring of password
 4. Do not have same password as one before.
 
-## Null Pointer Reference
+### Null Pointer Reference
 
 > Not dereferencing an object without checking if the value is null.
 
 It's simple yet easy to make mistakes
 - should be applied when getting parameter value by `getParameter();`
 
-## Improper Resouce Shutdown or Release
+### Improper Resouce Shutdown or Release
 
 > `Open File Descriptos, heap memory, and sockets` not being closed after usuage.
 
@@ -978,22 +978,22 @@ This goes same for sockets
     }
 ```
 
-## Call to Notify()
+### Call to Notify()
 
 > `Notify` method is not clear on which thread to wake. Do not use this method.
 
 1. Instead, use `lock1.lock()`, and `lock2.unlock()` with class variable `Lock lock1;`.
 
-## One liners (not vul, but mistakes)
+### One liners (not vul, but mistakes)
 
 - Do not use `serialPersistentFileds` with `public` modifier, but with `private static final`.
 - Use `thread.start()` instead of `thread.run()` for most cases. [details](https://www.tutorialspoint.com/difference-between-thread-start-and-thread-run-in-java)
 - Do not override `synchronized method` by `asynchronized method`.
 - Use `ServerThreadPool.getInstnace().alloc(), ServerThreadPool.getInstnace().free(this)` to allocate memory to thread.
 
-# Encapsulation
+## Encapsulation
 
-## Exposure of Data Element to Wrong Session
+### Exposure of Data Element to Wrong Session
 
 > samse as [](). Check that one.
 
