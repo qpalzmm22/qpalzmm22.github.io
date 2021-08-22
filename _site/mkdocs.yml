@@ -1,0 +1,7 @@
+site_name: My Docs
+site_url: https://example.com/
+
+theme:
+        name: material
+
+markdown-extention: docs-markdown
