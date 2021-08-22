@@ -14,5 +14,5 @@ HTTP 는 Application 계층에서 이루어진다
 HTTP 특징
 - Request 와 Response로 이루어짐
 - Client의 요청으로 시작
-- Stateless Protocol -> (cookie, session 등을 사용)
+- **Stateless Protocol** -> (cookie, session 등을 사용)
 
