@@ -2,6 +2,7 @@ site_name: My Docs
 site_url: https://example.com/
 
 theme:
+        logo: material/assets/right.ico
         name: material
 
 markdown-extention: docs-markdown
