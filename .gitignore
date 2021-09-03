@@ -6,3 +6,4 @@ vendor
 *.exe
 *.out
 bin/
+*not-done*

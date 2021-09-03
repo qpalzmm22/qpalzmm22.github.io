@@ -5,4 +5,9 @@ theme:
         logo: material/assets/right.ico
         name: material
 
-markdown-extention: docs-markdown
+markdown_extensions:
+        - admonition
+        - pymdownx.superfences 
+        - pymdownx.highlight:
+                linenums: true
+        

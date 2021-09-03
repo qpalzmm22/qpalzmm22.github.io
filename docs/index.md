@@ -1,19 +1,16 @@
-# Welcome to MkDocs
+# qpalzmm22
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-Refresh problem??
+---
 
-## Commands
+I love puzzles.. or do I?
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+My name is Jeongyoung. In Chinese Jeong(正) means right and in korean, young is 0. Therefore, my name is basically 01 Chae.  
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
-        
+---
+
+- [github.com/qpalzmm22](www.github.com/qpalzmm22)
+- [qpalzmm22@gmail.com](mailto:qpalzmm22@gmail.com)
+
+---
+
