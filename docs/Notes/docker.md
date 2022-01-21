@@ -2,7 +2,7 @@
 
 ## Container란
 
->> Containers are a lightweight and portable store for an application and its 
+> Containers are a lightweight and portable store for an application and its 
 dependencies
 
 - 컨테이너의 특성
@@ -24,4 +24,20 @@ Container를 설명하는데 이 그림이 빠질 수 없다.
 
 ## Container 이름의 유래
 - 선착장에서 선적할때 물건의 규격이 달라 선적하기 어려워서 만들어 진것이 컨테이너. 예를 들어 이사를 하기 위해 우리는 짐을 어디다가 짐을 넣는가? 바로 박스, 즉 컨테이너에 넣는다. 그러는 이유는 다양한 크기와 특성을 가진 물품들을 추상화 할 수 있기 때문인데 이로 인해 배송에 overhead를 줄일 수가 있다. 이와 같은 특성을 IT로 옮긴 기술이 docker이다.    
+
+## 유용한 Commands
+- `docker run -it {imageName:versionId}`
+- `docker insepct {imageName} `# use it with grep to get important information
+- `docker logs {imageName}`
+- `docker ps -a`
+
+## Docker Image creating
+
+*** 모든 이미지는 FROM 으로 어떠한 base image를 참조하는지 명시하여야 한다. *** 
+
+### UFS(Union File System) 혹은 유니온 마운트
+여러 파일시스템들을 겹처서(?) 사용할 수 있도록 해준다고 한다. 정확히 어떻게 작동하는 지는 잘 모르겠다.
+
+도커 이미지는 여러 계층(layers)로 구성되어 있다. 그 계충은 Dockerfile 에서의 명령마다 생성이 되며 이전 계층 위에 생성이 된다. 그렇기 때문에 하나의 RUN 명령안에 여러개의 UNIX COMMANDS 들을 작성하느 것이 좋다.
+
 

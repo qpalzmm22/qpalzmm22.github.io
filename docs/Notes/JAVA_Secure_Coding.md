@@ -16,7 +16,7 @@
 > Use of user's input as a query directly.
 
 1. Use `prepared Statements` and `setString()`.
-2. 
+
 ```JAVA
 ...
 String query = "SELECT * FROM ? WHERE Name = ? ";
@@ -25,7 +25,7 @@ stmt.setString(1, tableName);
 stmt.setString(2, name);
 ...
 ```
-2. Use `makeSecureString()`
+1. Use `makeSecureString()`
     1. strlen limit
     2. Keywords blacklisting
     3. use of [^\\p{Alnum}] \\ only use alphabets and digits
