@@ -12,8 +12,6 @@
 - 공유된 히스토리는 절대 변경하지 않는 것이 좋다.
 
 
-
-
 ## git commands
 
 | 명령어 | 용도 |
@@ -55,14 +53,14 @@
 ## 작업 취소하기
 | 원하는 것 | 설명 | 해결책 |
 |-----------|--------------|--------------|
-| 작업 폴더 안의 파일의 수정사항을 폐기한다 | 수정사항은 준비영역에 추가되거나 커밋되지 않았다 | `checkout --filename` |
-| 작업 폴더의 모든 저장되지 않을 수정사항을 폐기한다 | 파일은 준비영역에 추가되었지만, 커밋되지는 않았다 | `reset --hard` |
-| 특정 커밋을 제외한 여러 커밋을 합친다  **[?](##정리하며-생긴-궁금증)**|  | `reset commit`  |
-| 기록되지 않은 파일을 포함해 모든 저장되지 않은 파일을 삭제한다 | 수정된 파일은 커밋되지 않았다 | `clean -fd` |
-| 준비 영역의 모든 수정사항과 특정 커밋전까지 커밋된 작업을 삭제하되, 작업 폴더의 새 파일은 삭제하지 않는다 |  | `reset -hard commit` |
-| 이전작업을 삭제하되, 커밋 히스토리는 그래로 둔다("롤 포워드") | 브랜치는 게재됐고 작업폴더는 정리된 상태다 | `revert commit` |
-| 브랜치 히스토리에서 하나의 커밋 삭제하기 | 수정사항은 커밋됐고, 작업 폴더는 정리됐고 브랜치는 게재되지 않았다 | `rebase --interactive commit` |
-| 이전 작업은 계속 진행하도, 다른 커밋과 합친다 | squash 옵션 선택 | `rebase --interactive commit` |
+| 작업 폴더 안의 파일의 수정사항을 폐기한다 | 수정사항은 준비영역에 추가되거나 커밋되지 않았다 | `git checkout --filename` |
+| 작업 폴더의 모든 저장되지 않을 수정사항을 폐기한다 | 파일은 준비영역에 추가되었지만, 커밋되지는 않았다 | `git reset --hard` |
+| 특정 커밋을 제외한 여러 커밋을 합친다  **[?](##정리하며-생긴-궁금증)** |  | `git reset commit`  |
+| 기록되지 않은 파일을 포함해 모든 저장되지 않은 파일을 삭제한다 | 수정된 파일은 커밋되지 않았다 | `git clean -fd` |
+| 준비 영역의 모든 수정사항과 특정 커밋전까지 커밋된 작업을 삭제하되, 작업 폴더의 새 파일은 삭제하지 않는다 |  | `git reset -hard commit` |
+| 이전작업을 삭제하되, 커밋 히스토리는 그래로 둔다("롤 포워드") | 브랜치는 게재됐고 작업폴더는 정리된 상태다 | `git revert commit` |
+| 브랜치 히스토리에서 하나의 커밋 삭제하기 | 수정사항은 커밋됐고, 작업 폴더는 정리됐고 브랜치는 게재되지 않았다 | `git rebase --interactive commit` |
+| 이전 작업은 계속 진행하도, 다른 커밋과 합친다 | squash 옵션 선택 | `git rebase --interactive commit` |
 
 
 ## reset soft vs mixed vs hard
@@ -83,5 +81,44 @@
 - [여기가 잘 설명한다](https://cselabnotes.com/kr/2021/03/31/56/)
 
 ## git diff
+> Show changes between the working tree and the index or a tree, changes between the index and a tree, changes between two trees, changes resulting from a merge, changes between two blob objects, or changes between two files on disk.
+
+`git diff` basically tries to find LCS(Longest Common Sequences)
+There are four algorithms for differentiating files or trees. 
+
+### Myers Algorithm
+- Find same lines and 
+### Patience
+### Histogram
+ : Enhanced version of the `Patience`
+### Minimal
+
+
+
+## git merge
+
+### Fast-Forward Merge
+
+**Before Merging**
+
+![fast-forward-before](https://www.tutorialspoint.com/assets/questions/media/51681/master1.jpg)
+
+**After Merging**
+
+![fast-forward-after](https://www.tutorialspoint.com/assets/questions/media/51681/master2.jpg)
+
+Fast-Forward Merge simply moves one branch(pointer) to the target branch.
+
+### 3-way merge
+
+> Uses 3 commits, one is the source commit, one is target commit and the last one is the common ancestor commit.
+
+![3-way-merge](https://user-images.githubusercontent.com/26623547/133926511-e68926da-893a-4ddf-b576-b660ac8d31d2.png)
+
+Here, the source commit is `My` target commit is `Other` and the common ancestor commit is `Base`. The `git` acknowledges all the changes except the one that both source and target commits touched.
+
 
 ## git squash
+> Merges multiple commits into one commit.
+
+[git squah tldr](https://www.mankier.com/1/git-squash)
