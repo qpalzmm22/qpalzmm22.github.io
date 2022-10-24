@@ -12,7 +12,7 @@
 
 Contacts
 
-- Github 주소 [github.com/qpalzmm22](www.github.com/qpalzmm22)
+- Github 주소 [github.com/qpalzmm22](https://www.github.com/qpalzmm22)
 - Email : [qpalzmm22@gmail.com](mailto:qpalzmm22@gmail.com)
 
 ---
