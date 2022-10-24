@@ -94,7 +94,6 @@ There are four algorithms for differentiating files or trees.
 ### Minimal
 
 
-
 ## git merge
 
 ### Fast-Forward Merge

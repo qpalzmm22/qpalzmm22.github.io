@@ -1,13 +1,22 @@
-site_name: My Docs
+site_name: 영차영차
 site_url: https://example.com/
 
 theme:
         logo: material/assets/right.ico
         name: material
+        palette:
+                accent: indigo 
 
 markdown_extensions:
+        - pymdownx.critic
+        - pymdownx.caret
+        - pymdownx.keys
+        - pymdownx.mark
+        - pymdownx.tilde
         - admonition
+        - attr_list
+        - md_in_html
+        - pymdownx.details
         - pymdownx.superfences 
         - pymdownx.highlight:
-                linenums: true
-        
+                linenums: true 

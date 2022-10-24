@@ -4,8 +4,7 @@
 
 ### Minimum Spanning Tree
 
-- Use Kruskal's algorithm.
-- Use Union & Find
+- Use Union & Find for Kruskal Algorithm
 
 ### 사이클 판정법
 
@@ -15,6 +14,9 @@
 2. front 부터 0인 애들 지우면서 그 노드가 뻗은 간선이 만들어 낸 indegree를 빼준다
 3. 새로 indegree 정보가 업데이트되면 1번으로 다시 돌아간다.
 4. 더 이상 업데이트가 되지 안되는데 살아있는 애들은 cycle, 못 살아난 아이들은 not cycle
+
+### TIP
+- 여러 노드를 하나로 묶거나 하나의 노드에 weight을 주고 싶은 경우 **가상의 노드**를 추가하여 연산해보자
 
 ## Math
 
@@ -41,7 +43,10 @@
 ## MISC
 
 ### 특정 수가 몇개 존재하는 지 알기 위해서 
+
 - Use Lower bound, upper bound
+
 => 정렬된 array에 upperbound - lower bound 시 몇개 있는지 확인할 수 있다. 
+==> LIS( Longest Increasing Subsequence ) 문에 활용 가능하다.f
 
 
