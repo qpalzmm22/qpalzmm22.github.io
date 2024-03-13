@@ -1,0 +1,1695 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/Notes/docker/">
+      
+      
+        <link rel="prev" href="../Readme/">
+      
+      
+        <link rel="next" href="../git/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>Docker - 영차영차</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="영차영차" class="md-header__button md-logo" aria-label="영차영차" data-md-component="logo">
+      
+  <img src="../../material/assets/right.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            영차영차
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="영차영차" class="md-nav__button md-logo" aria-label="영차영차" data-md-component="logo">
+      
+  <img src="../../material/assets/right.ico" alt="logo">
+
+    </a>
+    영차영차
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JAVA_Secure_Coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JAVA Secure Coding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Read my notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container란
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container의 역사
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container 이름의 유래
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      유용한 Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-image-creating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Image creating
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Image creating">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ufsunion-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      UFS(Union File System) 혹은 유니온 마운트
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Namespace
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GIT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_study_%EC%A0%95%EB%A6%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Personal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Personal/desire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    나의 목표들
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Personal/thoughts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Life changing equations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reports/hisnet_vul/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hisnet information exposure and SQLi vulnerability Report(Fixed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Write Ups
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Write Ups
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Baekjoon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Baekjoon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/baekjoon/PS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Problem Solving Tactics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ftz
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Ftz
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FTZ 환경 설정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    test...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pwnable
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Pwnable
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/cmd1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cmd1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/cmd2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cmd2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/coin1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coin1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/fwnable_passwords/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fwnable passwords
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/horcruxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    horcruxes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/memcpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    memcpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/uaf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    uaf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Webhacking.kr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Webhacking.kr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/33/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    33
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container란
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container의 역사
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container 이름의 유래
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      유용한 Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-image-creating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Image creating
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Image creating">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ufsunion-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      UFS(Union File System) 혹은 유니온 마운트
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Namespace
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="docker">Docker</h1>
+<h2 id="container">Container란</h2>
+<blockquote>
+<p>Containers are a lightweight and portable storage for an application and its 
+dependencies.</p>
+</blockquote>
+<ul>
+<li>컨테이너의 특성</li>
+<li>호스트 OS자원을 사용하여 자원을 좀 더 효율적으로 사용 가능하다. </li>
+<li>운영환경의 변경을 쉽게 할 수 있다; 이식성 (portability) 제공.</li>
+<li>가볍다. (1번의 이유로 많은 수의 container들을 사용 가능)</li>
+<li>최종 사용자와 개발자가 클라우드에도 배포할 수 있다. 2번과 비슷하게 환경까지 다 포함시켜서 보낼 수 있다는 뜻 (?)</li>
+</ul>
+<blockquote>
+<p>외부 환경을 완벽하게 Emulate 하려는 VM과 달리 특히 container는 <code>이식성</code>과 <code>독립성</code>에 목적을 둔다.</p>
+</blockquote>
+<p>Container를 설명하는데 이 그림이 빠질 수 없다.</p>
+<p><img alt="VM" src="../img/VM.png" /></p>
+<p><img alt="Container" src="../img/Docker.png" /></p>
+<ul>
+<li>VM는 syscall들을 interpreting 하고 OS와 hardware에 대한 접근을 제어한다. 또한 각각의 VM이 OS 전체와 library 모두를 가지고 있어야 한다. 하지만 container는 항상 호스트와 같은 커널에서 실행된다(컨테이너 내부의 process가 호스트의 프로세스들과 동일하다).</li>
+</ul>
+<h2 id="container_1">Container의 역사</h2>
+<ul>
+<li>UNIX 에서는 chroot 명령어를 통해 독립도니 파일 시스템을 제공하였다. FreeBSD에서 jail 유틸리티를 제공하였고 2001년에 Solaris에서 자사에서만 사용 가능한 컨테이너화 기술을 개발하였다. Parrallels Inc. 에서는 Virtuozzo 컨테이너 기술을 발표하였고 이후에 2005년에 OpenVZ라는 이름으로 오픈소스화 하였다. 이후에 구글이 Linux Kernel을 위한 CGroups의 개발을 시작함과 동시에 구글의 인프라를 컨테이너로 옮기는 작업을 시작하였다. 이후에 LXC(Linux Container) 프로젝트는 2008년에 완벽한 컨테이너화 솔루션을 제공하였고 2013년에 Docker가 Contianerizing의 마지막 조각을 맞추면서 주류기술로 떠올랐다.</li>
+</ul>
+<h2 id="container_2">Container 이름의 유래</h2>
+<ul>
+<li>선착장에서 선적할때 물건의 규격이 달라 선적하기 어려워서 만들어 진것이 컨테이너. 예를 들어 이사를 하기 위해 우리는 짐을 어디다가 짐을 넣는가? 바로 박스, 즉 컨테이너에 넣는다. 그러는 이유는 다양한 크기와 특성을 가진 물품들을 추상화 할 수 있기 때문인데 이로 인해 배송에 overhead를 줄일 수가 있다. 이와 같은 특성을 IT로 옮긴 기술이 docker이다.    </li>
+</ul>
+<h2 id="commands">유용한 Commands</h2>
+<ul>
+<li><code>docker run -it {imageName:versionId}</code></li>
+<li><code>docker insepct {imageName}</code># use it with grep to get important information</li>
+<li><code>docker logs {imageName}</code></li>
+<li><code>docker ps -a</code></li>
+</ul>
+<h2 id="docker-image-creating">Docker Image creating</h2>
+<p><strong><em>모든 이미지는 FROM 으로 어떠한 base image를 참조하는지 명시하여야 한다.</em></strong> </p>
+<h3 id="ufsunion-file-system">UFS(Union File System) 혹은 유니온 마운트</h3>
+<p>여러 파일시스템들을 겹처서(?) 사용할 수 있도록 해준다고 한다. 정확히 어떻게 작동하는 지는 잘 모르겠다.</p>
+<p>도커 이미지는 여러 계층(layers)로 구성되어 있다. 그 계충은 Dockerfile 에서의 명령마다 생성이 되며 이전 계층 위에 생성이 된다. 그렇기 때문에 하나의 RUN 명령안에 여러개의 UNIX COMMANDS 들을 작성하는 것이 좋다.</p>
+<h3 id="image-namespace">Image Namespace</h3>
+<p>Docker Image들은 3가지의 namespace를 가질 수 있다.
+1. 첫번째는 <code>{userId}:{imageName}</code> 이루어진 <code>user namespace</code>이다. 
+2. 두번째는 <code>접두어</code>나 <code>:</code>가 없는 <code>root namespace</code> 이다.  도커 사에 의해 관리되고 공식적인 이미지를 위해 예약되어 있다. 통상적으로 소프트웨어를 제작하는 제작사에 의해서 관리된다. (ex: <code>nginx</code>, <code>debian</code>)
+3. 세번째는 Host 이름이나 IP가 접두어로 사용되는 이름이다. 써드 파티 레지스트리 등에서 찾을 수 있는 image들을 말한다.(ex: <code>localhost:5000/wordpress</code>)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  </body>
+</html>

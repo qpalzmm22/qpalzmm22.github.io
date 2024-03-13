@@ -1,0 +1,4260 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/Notes/JAVA_Secure_Coding/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../Readme/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>JAVA Secure Coding - 영차영차</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java-secure-coding-guide-note" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="영차영차" class="md-header__button md-logo" aria-label="영차영차" data-md-component="logo">
+      
+  <img src="../../material/assets/right.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            영차영차
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JAVA Secure Coding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="영차영차" class="md-nav__button md-logo" aria-label="영차영차" data-md-component="logo">
+      
+  <img src="../../material/assets/right.ico" alt="logo">
+
+    </a>
+    영차영차
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    JAVA Secure Coding
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    JAVA Secure Coding
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-secure-coding-guide-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      JAVA Secure Coding Guide Note
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVA Secure Coding Guide Note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#makesecurestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      makeSecureString()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-control-of-resource-identifiers-resource-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Control of Resource Identifiers, Resource Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commnad-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commnad Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unrestricted-uploading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unrestricted Uploading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Redirect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xquery-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      XQuery Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xpath-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      XPath Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LDAP Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-maniupulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP Maniupulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrfcross-site-request-forgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSRF(Cross-Site Request Forgery)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Traversal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-response-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Response Splitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Response Splitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-references_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer Overflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliance-on-untrusted-inputs-in-a-security-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliance on Untrusted Inputs in a Security Decision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdojava-data-objects-persistent-api-mybatis-data-map-sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      JDO(JAVA Data Objects), Persistent API, mybatis Data Map  (SQLi)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JDO(JAVA Data Objects), Persistent API, mybatis Data Map (SQLi)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mybatis-data-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      mybatis Data Map
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mybatis Data Map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-control-of-sys-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Control of Sys. config.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS, DOM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      EVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsafe-reflection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsafe Reflection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-without-integrity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download without Integrity check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqli-hibernate" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLi : Hibernate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliance-on-untrusted-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliance on Untrusted Inputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-permission-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Permission Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-broken-cryptographic-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of Broken Cryptographic algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-encryption-of-sensitive-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Encryption of sensitive data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard coded Password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-so-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not-So-Random
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plaintext-storage-of-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plaintext Storage of Password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Coded Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weak-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weak Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permanent-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permanent Cookies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-one-way-hash-function-without-salt-hardcoded-salt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of One-way Hash Function without Salt &amp;&amp; Hardcoded Salt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-integrity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Integrity Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inappropriate-session-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inappropriate Session Config.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-management-heap-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Management Heap Inspection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-codede-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard-Codede Username
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsa-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-csrf-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti CSRF Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-binds-to-same-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Binds to Same Port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insecurity-due-to-state-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insecurity due to State | Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insecurity due to State | Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toutoctime-of-check-time-of-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOUTOC(Time of check, Time of use)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinite-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infinite Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Database Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-condtion-singleton-member-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Race Condtion : Singleton Member Field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2ee-bad-practices-direct-use-of-threads-not-in-47" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2EE Bad Practices : Direct Use of Threads (Not in 47 )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-name-not-mapping-to-correct-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic Name not Mapping to Correct Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-checked-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Double-checked Locking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-exposure-on-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information exposure on error messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-of-error-condition-without-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection of Error Condition without action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-check-for-unusual-or-exceptional-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Check for Unusual or Exceptional Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strong-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strong Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-pointer-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Null Pointer Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-resouce-shutdown-or-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Resouce Shutdown or Release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-to-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call to Notify()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-liners-not-vul-but-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      One liners (not vul, but mistakes)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encapsulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encapsulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exposure-of-data-element-to-wrong-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposure of Data Element to Wrong Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Read my notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GIT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_study_%EC%A0%95%EB%A6%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Personal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Personal/desire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    나의 목표들
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Personal/thoughts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Life changing equations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reports/hisnet_vul/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hisnet information exposure and SQLi vulnerability Report(Fixed)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Write Ups
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Write Ups
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Baekjoon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Baekjoon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/baekjoon/PS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Problem Solving Tactics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ftz
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Ftz
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FTZ 환경 설정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/level2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/ftz/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    test...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pwnable
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Pwnable
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/cmd1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cmd1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/cmd2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cmd2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/coin1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coin1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/fwnable_passwords/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fwnable passwords
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/horcruxes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    horcruxes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/memcpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    memcpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/pwnable/uaf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    uaf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Webhacking.kr
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Webhacking.kr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/33/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    33
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Write-Ups/webhacking.kr/61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-secure-coding-guide-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      JAVA Secure Coding Guide Note
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVA Secure Coding Guide Note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#makesecurestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      makeSecureString()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-control-of-resource-identifiers-resource-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Control of Resource Identifiers, Resource Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commnad-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commnad Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unrestricted-uploading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unrestricted Uploading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Redirect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xquery-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      XQuery Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xpath-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      XPath Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LDAP Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-maniupulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP Maniupulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrfcross-site-request-forgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSRF(Cross-Site Request Forgery)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Traversal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-response-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Response Splitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Response Splitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-references_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer Overflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliance-on-untrusted-inputs-in-a-security-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliance on Untrusted Inputs in a Security Decision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdojava-data-objects-persistent-api-mybatis-data-map-sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      JDO(JAVA Data Objects), Persistent API, mybatis Data Map  (SQLi)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JDO(JAVA Data Objects), Persistent API, mybatis Data Map (SQLi)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mybatis-data-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      mybatis Data Map
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mybatis Data Map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relative Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-control-of-sys-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Control of Sys. config.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS, DOM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      EVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsafe-reflection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsafe Reflection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-without-integrity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download without Integrity check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqli-hibernate" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLi : Hibernate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliance-on-untrusted-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliance on Untrusted Inputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-permission-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Permission Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-broken-cryptographic-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of Broken Cryptographic algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-encryption-of-sensitive-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Encryption of sensitive data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard coded Password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-so-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not-So-Random
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plaintext-storage-of-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plaintext Storage of Password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Coded Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weak-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weak Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permanent-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permanent Cookies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-one-way-hash-function-without-salt-hardcoded-salt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of One-way Hash Function without Salt &amp;&amp; Hardcoded Salt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-integrity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Integrity Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inappropriate-session-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inappropriate Session Config.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-management-heap-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Management Heap Inspection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-codede-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard-Codede Username
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsa-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-csrf-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti CSRF Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-binds-to-same-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Binds to Same Port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insecurity-due-to-state-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insecurity due to State | Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insecurity due to State | Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toutoctime-of-check-time-of-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOUTOC(Time of check, Time of use)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinite-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infinite Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Database Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-condtion-singleton-member-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Race Condtion : Singleton Member Field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2ee-bad-practices-direct-use-of-threads-not-in-47" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2EE Bad Practices : Direct Use of Threads (Not in 47 )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-name-not-mapping-to-correct-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic Name not Mapping to Correct Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-checked-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Double-checked Locking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-exposure-on-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information exposure on error messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-of-error-condition-without-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection of Error Condition without action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-check-for-unusual-or-exceptional-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Check for Unusual or Exceptional Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strong-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strong Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-pointer-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Null Pointer Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improper-resouce-shutdown-or-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improper Resouce Shutdown or Release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-to-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call to Notify()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-liners-not-vul-but-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      One liners (not vul, but mistakes)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encapsulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encapsulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exposure-of-data-element-to-wrong-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposure of Data Element to Wrong Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>JAVA Secure Coding</h1>
+
+<h2 id="java-secure-coding-guide-note">JAVA Secure Coding Guide Note</h2>
+<p><strong>This Note is about ways to secure code JAVA against various attacks</strong></p>
+<ul>
+<li>Types of Secure Coding   <ul>
+<li>Input data verification</li>
+<li>Security feauture</li>
+<li>Time and State</li>
+<li>Error handling</li>
+<li>Code error</li>
+<li>Encapsulation</li>
+<li>API Missuse</li>
+</ul>
+</li>
+</ul>
+<h3 id="sqli">SQLi</h3>
+<blockquote>
+<p>Use of user's input as a query directly.</p>
+</blockquote>
+<ol>
+<li>Use <code>prepared Statements</code> and <code>setString()</code>.</li>
+</ol>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">...</span>
+<span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM ? WHERE Name = ? &quot;</span><span class="p">;</span>
+<span class="n">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">con</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
+<span class="n">stmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tableName</span><span class="p">);</span>
+<span class="n">stmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+1. Use <code>makeSecureString()</code>
+    1. strlen limit
+    2. Keywords blacklisting
+    3. use of [^\p{Alnum}] \ only use alphabets and digits
+    4. Also limit keywords like <code>IF, CHAR, CONCAT, ASCII, UNION, @, exec, ;, SUBSTRING, BENCHMARK, MD5,SHA1, etc...</code></p>
+<h4 id="makesecurestring">makeSecureString()</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">makeSecureString</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxLength</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">secureStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">maxLength</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Matcher</span><span class="w"> </span><span class="n">matcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unsecuredCharPattern</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="n">secureStr</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">matcher</span><span class="p">.</span><span class="na">replaceAll</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="improper-control-of-resource-identifiers-resource-injection">Improper Control of Resource Identifiers, Resource Injection</h3>
+<blockquote>
+<p>Happens when user's input is directly used to identify socket port, file, etc. </p>
+</blockquote>
+<ol>
+<li>Use list(dictionary) to restrict input value to what it's supposed to be.</li>
+</ol>
+<h3 id="xss">XSS</h3>
+<blockquote>
+<p>Availability of inserting script on page.</p>
+</blockquote>
+<ol>
+<li>
+<p>Switch  <code>&lt;, &gt;, &amp;, "</code> to <code>&amp;lt; &amp;gt; &amp;amp; &amp;quot;</code> using <code>replaceall()</code></p>
+</li>
+<li>
+<p>use OWASP supported API, <code>ESAPI.encoder().encodeForHTMLAttriute();</code></p>
+</li>
+</ol>
+<h3 id="commnad-injection">Commnad Injection</h3>
+<blockquote>
+<p>Use of user's input as part of  system commnad.</p>
+</blockquote>
+<ol>
+<li>Must make dictionary so that the user's input doesn't directly go into the command.</li>
+</ol>
+<h3 id="unrestricted-uploading">Unrestricted Uploading</h3>
+<blockquote>
+<ol>
+<li>Avalability of uploading script file. 2. Avalability to access them. </li>
+</ol>
+</blockquote>
+<ol>
+<li>Make upload directory outside of Web server document. (Different Domain)</li>
+<li>Using whitelisting, restirct file types(regardless of capitalization of extention).<ol>
+<li>File name must not consist <code>.*%00.*|.*%ZZ.*|.*;.*</code>, which are indicating <code>eol</code>. </li>
+<li>Use <code>if(extractFileType(file) == EXECUTABLE_FILE_TYPE)</code> with exeption handling.</li>
+</ol>
+</li>
+<li>Block user from executing files directly. If possible, control the file authority.</li>
+<li>Randomize file name with hash table</li>
+</ol>
+<h3 id="open-redirect">Open Redirect</h3>
+<blockquote>
+<p>Following code is weak against open redirect exploit. Cracker could redirect url and use <code>phishing</code> attack.     </p>
+</blockquote>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">...</span>
+<span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getQueryString</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">response</span><span class="p">.</span><span class="na">sendRedirect</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+1. Use whitelisting. Use the following <code>indexService()</code>, <code>contains</code> </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">IndexService</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">allowedUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">allowedUrls</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;http://www.site.com/subpage1.html&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">allowedUrls</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;http://www.site.com/subpage2.html&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">allowedUrls</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;http://www.site.com/subpage3.html&quot;</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="k">if</span><span class="p">(</span><span class="n">allowedUrls</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">shortcutInfo</span><span class="p">.</span><span class="na">url</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Error </span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="xquery-injection">XQuery Injection</h3>
+<blockquote>
+<p>!  Must study more..</p>
+</blockquote>
+<ol>
+<li>use <code>bind...()</code> functions</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">xqueryString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;doc(&#39;items.xml&#39;)/items/price/selling_price/&#39;$itemId&#39;&quot;</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="n">String</span><span class="w"> </span><span class="n">itemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">ITEM_ID</span><span class="p">);</span>
+<span class="n">xqe</span><span class="p">.</span><span class="na">bindString</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">QName</span><span class="p">(</span><span class="s">&quot;itemId&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">itemId</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="xpath-injection">XPath Injection</h3>
+<blockquote>
+<p><a href="https://velog.io/@mjhuh263/TIL-23-HTML-XPATH-%EB%AC%B8%EB%B2%95%EA%B3%BC-selenium%EC%97%90-XPATH-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0">What is XPath</a> </p>
+</blockquote>
+<ol>
+<li>Filter <code>", [, ], /, =, @, etc</code> and Query keywords</li>
+<li>Use XQuery class. <code>XQuery xquery = new XQueryFactory().createXQuery(new File("dologin.xq"));</code>, <code>vars.put("loginID", name);</code></li>
+</ol>
+<h3 id="ldap-injection">LDAP Injection</h3>
+<blockquote>
+<p>LDAP : <strong>(Lightweight Directory Access Protocol)</strong>. Protocol for directory service. <code>ctx.search()</code> inside LDAP, so one must consider injections.</p>
+</blockquote>
+<ul>
+<li>
+<p>LDAP Authentication Flow
+<img alt="1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlFwkV%2FbtqHT1ce8qb%2Fk6KfyzcwwF68hraSlFiWEK%2Fimg.png" /></p>
+</li>
+<li>
+<p>LDAP Directory struction
+<img alt="2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbub5ZE%2FbtqH0qB7Iwi%2Fm9aVKNNXYNnEt3sp6UxY0k%2Fimg.png" /></p>
+</li>
+</ul>
+<h4 id="relative-references">Relative references</h4>
+<ul>
+<li>
+<p><a href="https://yongho1037.tistory.com/796">https://yongho1037.tistory.com/796</a></p>
+</li>
+<li>
+<p>Filtering. Replace all the <code>\</code> in DN, and consider special characters<code>(=, +, &lt;, &gt;, #, ; \, (, ), etc)</code> as regular letter </p>
+</li>
+</ul>
+<h3 id="ldap-maniupulation">LDAP Maniupulation</h3>
+<blockquote>
+<p>Similar to LDAP Injection</p>
+</blockquote>
+<ol>
+<li>Replace all the <code>\</code>s with <code>str.replaceAll("\\","")</code></li>
+</ol>
+<h3 id="csrfcross-site-request-forgery">CSRF(Cross-Site Request Forgery)</h3>
+<blockquote>
+<p>Unauthorized requests done by attacker</p>
+</blockquote>
+<ol>
+<li>Use Post Method?? =&gt; What if you can modify it by MITM(Man in the Middle) Attack using <code>burpsuite</code>.</li>
+</ol>
+<h3 id="path-traversal">Path Traversal</h3>
+<ol>
+<li>Use <code>replaceAll()</code> to filter <strong>(", \, /)</strong>.</li>
+<li>Check file path with <code>getAbsolutePath()</code></li>
+<li>
+<p>Make document lists and get url by dictionary system. </p>
+</li>
+<li>
+<p>Why in path we need "-report"?</p>
+</li>
+</ol>
+<h3 id="http-response-splitting">HTTP Response Splitting</h3>
+<blockquote>
+<p>Happens on <code>HTTP</code>. If the application allowd <code>CR</code>(%0d,\r) and <code>LF</code>(%0a,\n), HTTLP Response Splitting attack is possible. This known to be fixed in most of the modern JAVA EE Application servers.</p>
+</blockquote>
+<p>Useful to understand HTTP Response Splitting 
+<a href="https://gracefulsecurity.com/http-header-injection/">Ref</a></p>
+<h4 id="relative-references_1">Relative references</h4>
+<ul>
+<li><a href="https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/">https://blog.detectify.com/2019/06/14/http-response-splitting-exploitations-and-mitigations/</a></li>
+<li><a href="https://owasp.org/www-community/attacks/Cross-User_Defacement">Cross-User Defacement</a></li>
+<li>Must filter all the header values that are direclty obtained by user. Filter out <code>\n and \r</code></li>
+</ul>
+<h3 id="integer-overflow">Integer Overflow</h3>
+<blockquote>
+<p>When receiving value as an integer, if the value is greater than 2147483647, it goes negative (2's complement).</p>
+</blockquote>
+<ol>
+<li>Make sure to check if the value is greater than 0</li>
+<li>Also, make sure value doesn't exceed the maximum value of the data type.</li>
+</ol>
+<h3 id="reliance-on-untrusted-inputs-in-a-security-decision">Reliance on Untrusted Inputs in a Security Decision</h3>
+<blockquote>
+<p>Trusting that the hidden values or the header values wouldn't be manipulated by users. </p>
+</blockquote>
+<ol>
+<li>Store sensetive informations like user session information in the server and do a security checkup inside the server.<ol>
+<li>Use session information instead of Cookie.</li>
+</ol>
+</li>
+<li>Design the program so that the program doesn't not depends on input values.</li>
+</ol>
+<h3 id="jdojava-data-objects-persistent-api-mybatis-data-map-sqli">JDO(JAVA Data Objects), Persistent API, mybatis Data Map  (SQLi)</h3>
+<blockquote>
+<p>Another way to execute SQLs.
+1. Use paramatized query (the one with <code>?</code>s)
+2. Use <a href="#makesecurestring">makeSecureString</a></p>
+</blockquote>
+<h4 id="relative-reference">Relative Reference</h4>
+<ul>
+<li><a href="https://gmlwjd9405.github.io/2018/12/25/difference-jdbc-jpa-mybatis.html">Presistent</a></li>
+</ul>
+<h3 id="mybatis-data-map">mybatis Data Map</h3>
+<blockquote>
+<ol>
+<li>Include filter.</li>
+<li>Do not use <code>($...$)</code> but use <code>#&lt;...&gt;#</code></li>
+</ol>
+</blockquote>
+<h4 id="relative-reference_1">Relative Reference</h4>
+<ul>
+<li><a href="https://logical-code.tistory.com/25">Difference of $$ and ##</a> </li>
+<li><a href="https://mybatis.org/mybatis-3/ko/sqlmap-xml.html">Mybatis</a></li>
+</ul>
+<h3 id="external-control-of-sys-config">External Control of Sys. config.</h3>
+<ol>
+<li>DO NOT use external input as parameter of <code>Connection.setCatalog()</code></li>
+<li>Use whitelisting</li>
+</ol>
+<p>When port is already in use, do not switch to new one </p>
+<ul>
+<li>Secure Coding Example
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">CHANGE_FTP_PORT</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">servicePortIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">PORT_INDEX_PARM</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">servicePortIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DEFAULT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">servicemanage</span><span class="p">.</span><span class="na">changeSerivcePort</span><span class="p">(</span><span class="n">FTP_SERVICE</span><span class="p">,</span><span class="w"> </span><span class="n">DEFAULT_FTP_PORT</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">servicePortIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ALTERNATIVE</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">servicemanage</span><span class="p">.</span><span class="na">changeSerivcePort</span><span class="p">(</span><span class="n">FTP_SERVICE</span><span class="p">,</span><span class="w"> </span><span class="n">ALTERNATIVE_FTP_PORT</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div></li>
+</ul>
+<h3 id="xss-dom">XSS, DOM</h3>
+<blockquote>
+<p>When <code>Document.write()</code> happens, it could be vulernable to <code>XSS</code>.</p>
+</blockquote>
+<ol>
+<li>Encode the letters (<code>&lt;, &gt;, &amp;, ", ', /</code>) to (<code>&amp;lt;, &amp;gt;, &amp;amp;, &amp;quot;, &amp;#x27;, &amp;#x2F;</code>). Use <code>StringEscapeUntils()</code> 
+2.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&lt;%</span>
+<span class="n">String</span><span class="w"> </span><span class="n">eid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;eid&quot;</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">safeEID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ESAPI</span><span class="p">.</span><span class="na">encoder</span><span class="p">().</span><span class="na">encodeForHTMLAttribute</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// insecure code doesn&#39;t contain this </span>
+<span class="o">%&gt;</span>
+<span class="p">...</span>
+<span class="n">Employee</span><span class="w"> </span><span class="n">ID</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;%=</span><span class="w"> </span><span class="n">safeEID</span><span class="w"> </span><span class="o">%&gt;</span>
+<span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="eval">EVAL</h3>
+<blockquote>
+<p>Watch what goes in to the <code>eval</code> parameter. Escape letters like (<code>&lt;, &gt;, &amp;, (, ), ", '</code>)</p>
+</blockquote>
+<ol>
+<li>Use ESAPI.encoder().encodeForJavaScript() </li>
+</ol>
+<h3 id="process-control">Process Control</h3>
+<blockquote>
+<p>When the process loads library without absolute path, the attacker may change the environment variable and set it to what the attacker wishes.</p>
+</blockquote>
+<ol>
+<li>Use absolute path.</li>
+<li>Use hash table. =&gt; limit what the users can do...</li>
+</ol>
+<h3 id="unsafe-reflection">Unsafe Reflection</h3>
+<blockquote>
+<p>Use of input as selection of class.</p>
+</blockquote>
+<ol>
+<li>Use whitelist. Control the input.</li>
+</ol>
+<h3 id="download-without-integrity-check">Download without Integrity check</h3>
+<blockquote>
+<p>Remote download without checking the integrity of the file.</p>
+</blockquote>
+<ol>
+<li>Sever : Encript the file with <code>private key</code>. And decript it with <code>public key</code> (It's in reverse order because everyone can acess it but noone can deform it.)</li>
+<li>Check checksum first, then decrypt it and use the file.<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">_download</span><span class="p">(</span><span class="n">checksumFilePath</span><span class="p">,</span><span class="w"> </span><span class="n">checksumURL</span><span class="p">);</span>
+<span class="n">decrypt</span><span class="p">(</span><span class="n">checksumFilePath</span><span class="p">,</span><span class="w"> </span><span class="n">publicKey</span><span class="p">);</span>
+<span class="n">_download</span><span class="p">(</span><span class="n">localPath</span><span class="p">,</span><span class="w"> </span><span class="n">remoteURL</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="n">checkCheckSum</span><span class="p">(</span><span class="n">localPath</span><span class="p">,</span><span class="w"> </span><span class="n">checksumFilePath</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<h3 id="sqli-hibernate">SQLi : Hibernate</h3>
+<blockquote>
+<p>Similar to Hibernate : TopLink, CoCoBase.</p>
+</blockquote>
+<p><img alt="출처: https://tinkerbellbass.tistory.com/24" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile22.uf.tistory.com%2Fimage%2F999ECC33599003FF337D83" /></p>
+<p><a href="https://tinkerbellbass.tistory.com/24">참조</a></p>
+<ol>
+<li>Use <code>setParameter()</code></li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">idValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">props</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;idLow&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">idValue</span><span class="p">))</span><span class="w"> </span><span class="n">idValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;defaultID&quot;</span><span class="p">;</span>
+<span class="n">Query</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createSQLQuery</span><span class="p">(</span><span class="s">&quot;select h from Honey as h where h.id &#39;=:idVal‘&quot;</span><span class="p">);</span>
+<span class="n">query</span><span class="p">.</span><span class="na">setParameter</span><span class="p">(</span><span class="s">&quot;idVal&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">idValue</span><span class="p">);</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
+<h3 id="reliance-on-untrusted-inputs">Reliance on Untrusted Inputs</h3>
+<blockquote>
+<p>Believing values like cookies, env. variables and hidden field input values are inmanipulatable.</p>
+</blockquote>
+<ol>
+<li>Save system status info in server(use session)</li>
+<li>If data must be preserved in client side, encrypt it and do integrity check</li>
+<li>Even after js does filtering do another one in server.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">HttpSession</span><span class="w"> </span><span class="n">ses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HttpSession</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="n">ses</span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="n">username</span><span class="p">);</span>
+<span class="n">ses</span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&quot;authenticated&quot;</span><span class="p">,</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Wrong</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getCookie</span><span class="p">(</span><span class="n">USER_TYPE</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="n">ADMIN_USER</span><span class="p">))</span>
+<span class="p">...</span>
+<span class="c1">// Right</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(((</span><span class="n">String</span><span class="p">)</span><span class="n">request</span><span class="p">.</span><span class="na">getSession</span><span class="p">().</span><span class="na">getAttribute</span><span class="p">(</span><span class="n">USER_TYPE</span><span class="p">)).</span><span class="na">equals</span><span class="p">(</span><span class="n">ADMIN_USER</span><span class="p">))</span>
+<span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="authentification">Authentification</h3>
+<blockquote>
+<p>Missing Authentification on Critical Functions</p>
+</blockquote>
+<ol>
+<li>Disable client from bypassing authentication</li>
+<li>Important page must be re-authenticated.<ul>
+<li>Use verified to be safe libraries and frameworks like <code>OpenSSL</code> &amp; <code>ESAPI</code> </li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enforceAuthorization</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">runtimeParameter</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">owasp</span><span class="p">.</span><span class="na">esapi</span><span class="p">.</span><span class="na">errors</span><span class="p">.</span><span class="na">AccessControlException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isAuthorized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AccessControlRule</span><span class="w"> </span><span class="n">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">AccessControlRule</span><span class="p">)</span><span class="n">ruleMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rule</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;AccessControlRule was not found for key: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Enforcing Authorization Rule \&quot;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\&quot; Using class: &quot;</span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">rule</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getCanonicalName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">isAuthorized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rule</span><span class="p">.</span><span class="na">isAuthorized</span><span class="p">(</span><span class="n">runtimeParameter</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;An unhandled Exception was &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;caught,</span>
+<span class="s">        so we are recasting it as an &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;AccessControlException.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isAuthorized</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;Access Denied for key: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; runtimeParameter: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">runtimeParameter</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="improper-authorization">Improper Authorization</h3>
+<blockquote>
+<p>SW not checking all the routes from users to access data.</p>
+</blockquote>
+<ol>
+<li>Reduce <code>attack surface</code>.</li>
+<li>Use frameworks like <code>JAAS</code>, <code>ESAPI</code> </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">example</p>
+<p>This is an example of LDAP setting
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sSingleId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iFlag</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sServiceProvider</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sUid</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sPwd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">env</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">PROVIDER_URL</span><span class="p">,</span><span class="w"> </span><span class="n">sServiceProvider</span><span class="p">);</span>
+<span class="w">    </span><span class="n">env</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">SECURITY_AUTHENTICATION</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;simple&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// not &quot;none&quot; !!</span>
+<span class="w">    </span><span class="n">env</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">SECURITY_PRINCIPAL</span><span class="p">,</span><span class="w"> </span><span class="n">sUid</span><span class="p">);</span>
+<span class="w">    </span><span class="n">env</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">SECURITY_CREDENTIALS</span><span class="p">,</span><span class="w"> </span><span class="n">sPwd</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<p>The following example uses <code>ruleMap</code> </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enforceAuthorization</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">runtimeParameter</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">owasp</span><span class="p">.</span><span class="na">esapi</span><span class="p">.</span><span class="na">errors</span><span class="p">.</span><span class="na">AccessControlException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isAuthorized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">       </span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AccessControlRule</span><span class="w"> </span><span class="n">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">AccessControlRule</span><span class="p">)</span><span class="n">ruleMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rule</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;AccessControlRule was not found for key: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Enforcing Authorization Rule \&quot;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\&quot; Using class: &quot;</span><span class="o">+</span><span class="w"> </span><span class="n">rule</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getCanonicalName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">isAuthorized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rule</span><span class="p">.</span><span class="na">isAuthorized</span><span class="p">(</span><span class="n">runtimeParameter</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;An unhandled Exception was &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;caught, so we are recasting it as an &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;AccessControlException.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isAuthorized</span><span class="p">)</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccessControlException</span><span class="p">(</span><span class="s">&quot;Access Denied for key: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; runtimeParameter: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">runtimeParameter</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="improper-permission-assignment">Improper Permission Assignment</h3>
+<blockquote>
+<p>Assignment of read or write authority to unauthorized user.</p>
+</blockquote>
+<ol>
+<li>Config. files and exec files and libs must be only read and executed by admin.</li>
+<li>Important files like config. files must checked if others can access to it.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;umask 77&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// umask 77 makes it rwx------</span>
+<span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;/home/report/report.txt&quot;</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="use-of-broken-cryptographic-algorithm">Use of Broken Cryptographic algorithm</h3>
+<blockquote>
+<p>Use of algorithms like <code>RC2, RC4, RC5, RC6, MD4, MD5, SHA1,DES</code>
+Key size should be long enough        </p>
+</blockquote>
+<p><img alt="1" src="safe_Secure_Coding" /></p>
+<p>Following code uses <code>RSA</code> + <code>OAEP</code>, which is known to be strongest cryptophically safe combination.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Statement</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.ServletException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.annotation.WebServlet</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServlet</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.Key</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPair</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPairGenerator</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.SecureRandom</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.Security</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.Cipher</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">* Servlet implementation class SqlInjection</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Service</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COMMAND_PARAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Command Ӯဖ ὆</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CHANGE_PASSWORD_CMD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;get_user_info&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">USER_ID_PARM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;user_id&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PASSWORD_PARM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NEW_PASSWORD_PARM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;new_password&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span>
+<span class="w">    </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;command&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">CHANGE_PASSWORD_CMD</span><span class="p">)){</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">USER_ID_PARM</span><span class="p">);</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">PASSWORD_PARM</span><span class="p">);</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">newPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">NEW_PASSWORD_PARM</span><span class="p">);</span>
+<span class="w">            </span><span class="p">...</span>
+<span class="w">            </span><span class="n">SecureRandom</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SecureRandom</span><span class="p">();</span>
+<span class="w">            </span><span class="n">KeyPairGenerator</span><span class="w"> </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyPairGenerator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;RSA&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">generator</span><span class="p">.</span><span class="na">initialize</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="n">random</span><span class="p">);</span>
+<span class="w">            </span><span class="n">KeyPair</span><span class="w"> </span><span class="n">pair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generator</span><span class="p">.</span><span class="na">generateKeyPair</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Key</span><span class="w"> </span><span class="n">pubKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span><span class="na">getPublic</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Key</span><span class="w"> </span><span class="n">privKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span><span class="na">getPrivate</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Cipher</span><span class="w"> </span><span class="n">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cipher</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;RSA/ECB/OAEP&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">ENCRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">pubKey</span><span class="p">,</span><span class="w"> </span><span class="n">random</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">cipherText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">newPassword</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<span class="w">            </span><span class="n">ChangeUserPassword</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">cipherText</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="missing-encryption-of-sensitive-data">Missing Encryption of sensitive data</h3>
+<blockquote>
+<p>Sending sensitive information without encryption</p>
+</blockquote>
+<ol>
+<li>Encrypt all the sensitive infos when sending it across internet</li>
+<li>Use Secure Cookies(HTTPS only).</li>
+</ol>
+<h3 id="hard-coded-password">Hard coded Password</h3>
+<blockquote>
+<p>Not good for passwords to be hard coded. It's better to be written in seperate file.</p>
+</blockquote>
+<p><img alt="Cipher Class usuage" src="https://m.blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=javaking75&amp;logNo=220552245734" />
+package com.qpalzmm22.test;</p>
+<p>Following code is how to use <code>AES</code> and <code>RSA</code> </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.UnsupportedEncodingException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.InvalidKeyException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPair</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPairGenerator</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.NoSuchAlgorithmException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.interfaces.RSAPrivateKey</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.interfaces.RSAPublicKey</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.BadPaddingException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.Cipher</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.IllegalBlockSizeException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.NoSuchPaddingException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PractiveEncryption</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">encryptWithAES</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">encrypt_key</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">plain_text</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="p">,</span><span class="w"> </span><span class="n">NoSuchPaddingException</span><span class="p">,</span><span class="w"> </span><span class="n">InvalidKeyException</span><span class="p">,</span><span class="w"> </span><span class="n">IllegalBlockSizeException</span><span class="p">,</span><span class="w"> </span><span class="n">BadPaddingException</span><span class="p">,</span><span class="w"> </span><span class="n">UnsupportedEncodingException</span><span class="w"> </span><span class="p">{</span>
+
+
+<span class="w">        </span><span class="n">Cipher</span><span class="w"> </span><span class="n">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cipher</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;AES&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">SecretKeySpec</span><span class="w"> </span><span class="n">secretKeySpec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SecretKeySpec</span><span class="p">(</span><span class="n">encrypt_key</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(),</span><span class="s">&quot;AES&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">ENCRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">secretKeySpec</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">encryptBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">plain_text</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">encryptBytes</span><span class="p">));</span>
+
+
+<span class="w">        </span><span class="c1">//=======================//</span>
+
+<span class="w">        </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">DECRYPT_MODE</span><span class="p">,</span><span class="n">secretKeySpec</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">decryptBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">encryptBytes</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">decryptBytes</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">encryptWithRSA</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">plain_text</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="p">,</span><span class="w"> </span><span class="n">NoSuchPaddingException</span><span class="p">,</span><span class="w"> </span><span class="n">InvalidKeyException</span><span class="p">,</span><span class="w"> </span><span class="n">IllegalBlockSizeException</span><span class="p">,</span><span class="w"> </span><span class="n">BadPaddingException</span><span class="p">,</span><span class="w"> </span><span class="n">UnsupportedEncodingException</span><span class="p">{</span>
+
+<span class="w">        </span><span class="n">KeyPairGenerator</span><span class="w"> </span><span class="n">keypairgen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyPairGenerator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;RSA&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">KeyPair</span><span class="w"> </span><span class="n">keyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keypairgen</span><span class="p">.</span><span class="na">generateKeyPair</span><span class="p">();</span>
+<span class="w">        </span><span class="n">RSAPrivateKey</span><span class="w"> </span><span class="n">privateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RSAPrivateKey</span><span class="p">)</span><span class="w"> </span><span class="n">keyPair</span><span class="p">.</span><span class="na">getPrivate</span><span class="p">();</span>
+<span class="w">        </span><span class="n">RSAPublicKey</span><span class="w"> </span><span class="n">publicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RSAPublicKey</span><span class="p">)</span><span class="n">keyPair</span><span class="p">.</span><span class="na">getPublic</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">Cipher</span><span class="w"> </span><span class="n">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cipher</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;RSA&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">ENCRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">privateKey</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">encryptBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">plain_text</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">encryptBytes</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">DECRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">publicKey</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">decryptBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">encryptBytes</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">decryptBytes</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">encrypt_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;happyProgrammer!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// must be 16 letters long.</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">plain_text1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">plain_text2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;I want to pass the test&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">encryptWithAES</span><span class="p">(</span><span class="n">encrypt_key</span><span class="p">,</span><span class="w"> </span><span class="n">plain_text1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidKeyException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NoSuchPaddingException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IllegalBlockSizeException</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">BadPaddingException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">UnsupportedEncodingException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// TODO Auto-generated catch block</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">encryptWithRSA</span><span class="p">(</span><span class="n">plain_text2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidKeyException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NoSuchPaddingException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IllegalBlockSizeException</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">BadPaddingException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">UnsupportedEncodingException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// TODO Auto-generated catch block</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="not-so-random">Not-So-Random</h3>
+<blockquote>
+<p>use of <code>Math.random()</code> is not so random due to the lack of seed.</p>
+</blockquote>
+<ol>
+<li>Use <code>java.util.Random</code> class instead</li>
+<li>Use <code>SecureRandom()</code> for key generation</li>
+</ol>
+<h3 id="plaintext-storage-of-password">Plaintext Storage of Password</h3>
+<blockquote>
+<p>Saving password as is... ex)old passwd file in unix systems.</p>
+</blockquote>
+<ol>
+<li>Using <code>RSA</code> with <code>OAEP</code></li>
+</ol>
+<h3 id="hard-coded-keys">Hard Coded Keys</h3>
+<blockquote>
+<p>Hard coded keys give away information about the encryption. Attacker may use this to brute force the code.</p>
+</blockquote>
+<ol>
+<li>It is recommended to use <code>AES, ARIA, SEED, 3DES</code> for symmetric keys and <code>RSA</code> that's 2048 bit long for asymmnetric key algorithm. DO NOT USE <code>MD4, MD5, SHA1</code></li>
+<li>Encrypt the keys in diffrent file.</li>
+</ol>
+<h3 id="weak-passwords">Weak Passwords</h3>
+<blockquote>
+<p>Weak Passwords cause user account to be vulnerable.</p>
+</blockquote>
+<ol>
+<li>Check for the password and require better passwords from user</li>
+</ol>
+<h3 id="permanent-cookies">Permanent Cookies</h3>
+<blockquote>
+<p>External input deciding max age of cookies</p>
+</blockquote>
+<ol>
+<li>System must check and require user to type stronger password.</li>
+<li>Something like this...
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Cookie</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cookie</span><span class="p">(</span><span class="s">&quot;sessionID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sessionID</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">maxAge</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3600</span><span class="p">){</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3600</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">c</span><span class="p">.</span><span class="na">setMaxAge</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div></li>
+<li>Cookie.setMaxAge to negetive value.(only exists when browser is not shutdown).</li>
+</ol>
+<h3 id="use-of-one-way-hash-function-without-salt-hardcoded-salt">Use of One-way Hash Function without Salt &amp;&amp; Hardcoded Salt</h3>
+<ul>
+<li>Also, do not hard code the salt, but use random values using following code. </li>
+</ul>
+<blockquote>
+<p>Without salt, has functions are weak against rainbow table.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SecureRandom</span><span class="w"> </span><span class="n">prng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SecureRandom</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;SHA256PRNG&quot;</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">randomNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Integer</span><span class="p">(</span><span class="w"> </span><span class="n">prng</span><span class="p">.</span><span class="na">nextInt</span><span class="p">()</span><span class="w"> </span><span class="p">).</span><span class="na">toString</span><span class="p">();</span>
+<span class="n">digest</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">randomNum</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Instead of This...</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.security.MessageDigest</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="n">btye</span><span class="o">[]</span><span class="w"> </span><span class="nf">getHash</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">digest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstances</span><span class="p">(</span><span class="s">&quot;SHA-256&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">digest</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digest</span><span class="p">.</span><span class="na">digest</span><span class="p">(</span><span class="n">password</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Use this</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">btye</span><span class="o">[]</span><span class="w"> </span><span class="nf">getHash</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">salt</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">digest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstances</span><span class="p">(</span><span class="s">&quot;SHA-256&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">digest</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">digest</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">salt</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digest</span><span class="p">.</span><span class="na">digest</span><span class="p">(</span><span class="n">password</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">PS</p>
+<p>The <strong>KeyPairGenerator</strong> class is used to generate pairs of public and private keys. Key pair generators are constructed using the getInstance factory methods (static methods that return instances of a given class).
+A Key pair generator for a particular algorithm creates a public/private key pair that can be used with this algorithm. It also associates algorithm-specific parameters with each of the generated keys.</p>
+<p>There are two ways to generate a key pair: in an algorithm-independent manner, and in an algorithm-specific manner. The only difference between the two is the initialization of the object:</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">PSS</p>
+<p>Also interestingly, <strong>KeyPairGenerator</strong> automatically uses highest-priorty installed <code>secureRandom</code> as a source of randomness when <code>initialize()</code> fucntion is called with parameter of <code>AlgorithmParameterSpec</code>. That is not the case for <strong>MessageDigest</strong> classes</p>
+</div>
+<h3 id="no-integrity-check">No Integrity Check</h3>
+<blockquote>
+<p>Executing or uploading files without checking the integrity of file.</p>
+</blockquote>
+<p>1.<code>DNS lookup</code></p>
+<h3 id="inappropriate-session-config">Inappropriate Session Config.</h3>
+<blockquote>
+<p><code>SessionMAxInactiveInterval</code> shouldn't be -1</p>
+</blockquote>
+<ol>
+<li>session.setMaxInactiveInterval(-1);</li>
+<li>Also in xml
+    <session-config>
+    <session-timeout>-1</session-timeout>
+    </session-config></li>
+</ol>
+<h3 id="password-management-heap-inspection">Password Management Heap Inspection</h3>
+<blockquote>
+<p>It's not safe to save infortant data in String class. They always reside in memory until garbage collector in JVM activates. </p>
+</blockquote>
+<ol>
+<li>No saving imfos like this <code>String str = new String(pass)</code>;</li>
+<li>Use local String variable. It will disappear as soon as function disappears.</li>
+</ol>
+<h3 id="hard-codede-username">Hard-Codede Username</h3>
+<blockquote>
+<p>DO NOT hard-code login infos, it makes software management hard, or cause bug and of course, login info will be exposed when someone is accessible to code(duh).</p>
+</blockquote>
+<ol>
+<li>Instead recieve it through parameter.</li>
+<li>It's safer to <code>load log infos</code> and <code>receive the infos</code> with structered programming method.</li>
+</ol>
+<h3 id="rsa-padding">RSA Padding</h3>
+<blockquote>
+<p>RSA must be used with Padding, must be used with <code>Cipher cipher = Cipher.getInstnaces("RSA/EBC/OAEPPadding")</code>. Not <code>"RSA/**none**/OAEPPadding"</code>.</p>
+</blockquote>
+<p>(What is <code>EBC, CBC</code>)[https://ko.wikipedia.org/wiki/%EB%B8%94%EB%A1%9D_%EC%95%94%ED%98%B8_%EC%9A%B4%EC%9A%A9_%EB%B0%A9%EC%8B%9D]</p>
+<p>OAEP
+<img alt="!" src="https://en.wikipedia.org/wiki/File:Oaep-diagram-20080305.png" /></p>
+<h3 id="anti-csrf-token">Anti CSRF Token</h3>
+<h3 id="multiple-binds-to-same-port">Multiple Binds to Same Port</h3>
+<blockquote>
+<p>Could be weak against <code>packet snipping</code></p>
+</blockquote>
+<ol>
+<li><code>socket.setReuseAddress(false);</code></li>
+</ol>
+<h2 id="insecurity-due-to-state-time">Insecurity due to State | Time</h2>
+<h3 id="toutoctime-of-check-time-of-use">TOUTOC(Time of check, Time of use)</h3>
+<blockquote>
+<p>Parellel threads must be manged with multi-processing safe functions</p>
+</blockquote>
+<ol>
+<li>Use <code>synchronized</code> modifier for the block to be synchronized with other threads.</li>
+</ol>
+<p>EX : (notice <code>synchronized</code>)
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;Test_367.txt&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+2. This goes same for variable that must be shared among other threads
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">synchronized</span><span class="p">(</span><span class="n">SYNC</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hreq</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div></p>
+<p><a href="https://www.daleseo.com/synchronization/">about synchronization</a></p>
+<h3 id="infinite-loop">Infinite Loop</h3>
+<blockquote>
+<p>Always put recursion in <code>if-else</code> statement. Always check if file is <code>symbolic link</code>. link when traversing directories with <code>isSymbolicLink()</code></p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">findFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">rootDir</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="p">){</span>
+<span class="w">    </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">fileList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getSubFiles</span><span class="p">(</span><span class="n">rootDir</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fileIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">fileIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fileList</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">fileIdx</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">isDirectory</span><span class="p">(</span><span class="n">fileList</span><span class="o">[</span><span class="n">fileIdx</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">){</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">isSymbolicLink</span><span class="p">(</span><span class="n">fileList</span><span class="o">[</span><span class="n">fileIdx</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">)){</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">foundPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findFile</span><span class="p">(</span><span class="n">fileList</span><span class="o">[</span><span class="n">fileIdx</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">fileName</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">foundPath</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">fileList</span><span class="o">[</span><span class="n">fileIdx</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">foundPath</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fileList</span><span class="o">[</span><span class="n">fileIdx</span><span class="o">]</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">fileName</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Connection must be done like so because if we only allow <code>conn</code> not equal to null, </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SearchThread</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="p">{</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jdbc_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jdbc_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:orcle:Thin@123.234.33.22:1521:company&quot;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dbPasswd</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">seachItem</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SearchThread</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">searchItem</span><span class="p">){</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">searchItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchItem</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManeger</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">jdbc_url</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123.234.33.22&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ItemSearcher</span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">searchItems</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">){</span>
+<span class="w">        </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SearchThread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threads</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">){</span>
+<span class="w">            </span><span class="n">SearchThread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchThread</span><span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">idx</span><span class="p">));</span>
+<span class="w">            </span><span class="n">threads</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span>
+<span class="w">            </span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="static-database-connection">Static Database Connection</h3>
+<blockquote>
+<p>Do not use <code>Static</code> keyword for DB connection. This will cause race condition if it's called in multiple places.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Unclear</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// if(conn == NULL) &lt;- not needed because we run it in seperate thread</span>
+<span class="w">    </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">jdbc_url</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123.234.33.22&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dbPassword</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="race-condtion-singleton-member-field">Race Condtion : Singleton Member Field</h3>
+<blockquote>
+<p>servlet member fields are shared among other threads, so they may be exposed to unauthorized user.</p>
+</blockquote>
+<ol>
+<li>Do Not save user input data's in Servlet field, but save in local variable</li>
+<li>
+<p>or use <code>new</code> to allocate the memory.</p>
+</li>
+<li>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RaceCon</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">javax</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">http</span><span class="p">.</span><span class="na">HttpServlet</span>
+<span class="p">{</span><span class="w"> </span>
+<span class="c1">// private String name; &lt;= do not use this as memberd field</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span>
+<span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Instead recieve it on local variable </span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+<span class="o">---</span>
+
+<span class="mf">2.</span><span class="w"> </span>
+<span class="err">```</span><span class="n">JAVA</span>
+<span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">loginInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+<span class="n">loginInfo</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">USER_ID_PARM</span><span class="p">);</span>
+<span class="n">loginInfo</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="n">PASSWORD_PARM</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+Something like this...</p>
+</li>
+</ol>
+<h3 id="j2ee-bad-practices-direct-use-of-threads-not-in-47">J2EE Bad Practices : Direct Use of Threads (Not in 47 )</h3>
+<blockquote>
+<p><code>J2EE</code> restrictes one from user threads in web applications. Instead, one must use defined framework.</p>
+</blockquote>
+<ol>
+<li>No new <code>Thread(Runnable).start()</code>;</li>
+</ol>
+<p>Safe code looks someting like this
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">runthread</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOExcption</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// New MyClass().main() </span>
+<span class="w">        </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="s">&quot;java AsyncClass&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">AsyncClass</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Process and store request stats</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;do something&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="symbolic-name-not-mapping-to-correct-object">Symbolic Name not Mapping to Correct Object</h3>
+<blockquote>
+<p>Attackers could try to manipulate what the symbolic name is pointing.</p>
+</blockquote>
+<ol>
+<li>Do not call classes by <code>Class.forName("...");</code>, but call by default way(use constructor), <code>new ...</code></li>
+<li><strong>Do not link</strong> the important file but <strong>read the file directly.</strong></li>
+</ol>
+<p>Do not do this, but use the file directly
+<img alt="1" src="../img/symbolic_name_0.PNG" /></p>
+<h3 id="double-checked-locking">Double-checked Locking</h3>
+<blockquote>
+<p>Double-checked locking does not work as intended. Method Synchonization is the most secure way to synchronize.</p>
+</blockquote>
+<h2 id="error-handling">Error handling</h2>
+<h3 id="information-exposure-on-error-messages">Information exposure on error messages</h3>
+<blockquote>
+<p>Users could obtain information about system by error messages.</p>
+</blockquote>
+<ol>
+<li>Send minimum error messages and deal with exceptions inside the source code.</li>
+<li>Be careful when using <code>printStackTrace()</code></li>
+<li>Do not include any system info in the error messages</li>
+</ol>
+<h3 id="detection-of-error-condition-without-action">Detection of Error Condition without action</h3>
+<blockquote>
+<p>A situation where the error was found but not handled correctly</p>
+</blockquote>
+<ol>
+<li>Must do <strong>something</strong> in try-catch block</li>
+<li>In Try-catch statment, one must make sure after try{}, we must set sensitive values to default values so that the users can't access the value.</li>
+</ol>
+<h3 id="improper-check-for-unusual-or-exceptional-conditions">Improper Check for Unusual or Exceptional Conditions</h3>
+<blockquote>
+<p>Do not use broad exceptions (Exception e ), but use specific exceptions</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readFromFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">FileNotFoundException</span><span class="p">,</span>
+<span class="n">IOException</span><span class="p">,</span><span class="n">MyException</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// check if filename is null </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NULL</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyException</span><span class="p">(</span><span class="s">&quot;ERROR&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">myFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FileReader</span><span class="w"> </span><span class="n">fr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileReader</span><span class="p">(</span><span class="n">myFile</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// catch for all possible exceptions</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">FileNotFoundException</span><span class="w"> </span><span class="n">fe</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">ie</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Combine to the security rule above(<strong>Detection of Error Condition without action</strong>), one must consider all the possibilities and apply actions to each one of them.</p>
+<h3 id="strong-passwords">Strong Passwords</h3>
+<p>Secure Passwords Guide</p>
+<ol>
+<li>Passwords should be 9 ~ 15 letters</li>
+<li>At least one special character.</li>
+<li>Do not have id as substring of password</li>
+<li>Do not have same password as one before.</li>
+</ol>
+<h3 id="null-pointer-reference">Null Pointer Reference</h3>
+<blockquote>
+<p>Not dereferencing an object without checking if the value is null.</p>
+</blockquote>
+<p>It's simple yet easy to make mistakes
+- should be applied when getting parameter value by <code>getParameter();</code></p>
+<h3 id="improper-resouce-shutdown-or-release">Improper Resouce Shutdown or Release</h3>
+<blockquote>
+<p><code>Open File Descriptos, heap memory, and sockets</code> not being closed after usuage.</p>
+</blockquote>
+<ol>
+<li>do not close connection on <code>try</code> statment but use <code>finally</code> to close it</li>
+</ol>
+<p>FOR EXAMPLE : </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processFile</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://127.0.0.1/example?user=root&amp;password=1234&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Class</span><span class="p">.</span><span class="na">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">finally</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="n">conn</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">...</span>
+</code></pre></div></td></tr></table></div>
+<p>This goes same for sockets</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">...</span>
+<span class="w">    </span><span class="k">finally</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">listenSocket</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">listenSocket</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">listenSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">connectionSocket</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">connectionSocket</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">            </span><span class="n">connectionSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="call-to-notify">Call to Notify()</h3>
+<blockquote>
+<p><code>Notify</code> method is not clear on which thread to wake. Do not use this method.</p>
+</blockquote>
+<ol>
+<li>Instead, use <code>lock1.lock()</code>, and <code>lock2.unlock()</code> with class variable <code>Lock lock1;</code>.</li>
+</ol>
+<h3 id="one-liners-not-vul-but-mistakes">One liners (not vul, but mistakes)</h3>
+<ul>
+<li>Do not use <code>serialPersistentFileds</code> with <code>public</code> modifier, but with <code>private static final</code>.</li>
+<li>Use <code>thread.start()</code> instead of <code>thread.run()</code> for most cases. <a href="https://www.tutorialspoint.com/difference-between-thread-start-and-thread-run-in-java">details</a></li>
+<li>Do not override <code>synchronized method</code> by <code>asynchronized method</code>.</li>
+<li>Use <code>ServerThreadPool.getInstnace().alloc(), ServerThreadPool.getInstnace().free(this)</code> to allocate memory to thread.</li>
+</ul>
+<h2 id="encapsulation">Encapsulation</h2>
+<h3 id="exposure-of-data-element-to-wrong-session">Exposure of Data Element to Wrong Session</h3>
+<blockquote>
+<p>samse as <a href=""></a>. Check that one.</p>
+</blockquote>
+<h2 id="_1"></h2>
+<div class="admonition note">
+<p class="admonition-title">Things to Study</p>
+<ol>
+<li>XSS Injection vs. XSS Manipulation</li>
+<li>LDAP </li>
+<li>unsafe reflection</li>
+<li>Integer overflow ex.2</li>
+<li>RuleMap</li>
+<li>Cipher class</li>
+<li>MessageDigest </li>
+<li>Connection con = DriverManager.getConnection(url, "scott", "tiger"); pg.140</li>
+<li>MessageDigest class</li>
+<li>16번 무결성  검사없는 코드 다운로드</li>
+<li>page 243 .why set max_length as local variable?</li>
+</ol>
+</div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  </body>
+</html>
