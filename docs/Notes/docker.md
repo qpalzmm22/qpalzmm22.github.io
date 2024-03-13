@@ -1,4 +1,4 @@
-# 제대로 배우는 도커를 읽고
+# Docker
 
 ## Container란
 
